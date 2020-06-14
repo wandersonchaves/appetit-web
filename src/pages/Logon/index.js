@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./styles.css";
 import logoImg from "../../assets/logo.svg";
@@ -19,7 +20,9 @@ export default function Logon() {
           <input type="text" placeholder="Email" />
           <input type="text" placeholder="Senha" />
 
-          <a href="/register">RECUPERAR MINHA SENHA</a>
+          <Link className="back-link" to="/register">
+            NÃO TENHO CADASTRO
+          </Link>
 
           <button className="button" type="submit">
             Entrar

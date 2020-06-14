@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import { isAutenticated } from "./auth";
+import Logon from "./pages/Logon";
+import Register from "./pages/Register";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -16,14 +18,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-const Routes = () => (
-  // eslint-disable-next-line no-unused-expressions
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={() => <h1>Hello World</h1>} />
-      <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
-    </Switch>
-  </BrowserRouter>
-);
-
-export default Routes;
+export default function Routes() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Logon} />
+        <Route path="/register" component={Register} />
+        <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
+      </Switch>
+    </BrowserRouter>
+  );
+}
