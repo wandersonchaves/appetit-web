@@ -37,6 +37,23 @@ export default function Products() {
             <li>Observações</li>
           </ul>
 
+          <p>Clientes</p>
+
+          <ul>
+            <li>
+              <p>Avatar</p>
+              <strong>Nome do Cliente</strong>
+            </li>
+            <li>
+              <p>Avatar</p>
+              <strong>Nome do Cliente</strong>
+            </li>
+            <li>
+              <p>Avatar</p>
+              <strong>Nome do Cliente</strong>
+            </li>
+          </ul>
+
           <strong>Total</strong>
           <p>R$ Preço</p>
         </section>
@@ -48,32 +65,20 @@ export default function Products() {
           <p>Passo 3 de 3</p>
           <p>Barra de Progresso</p>
 
-          <strong>Para quem você está vendendo?</strong>
-          <input type="text" placeholder="Procure o cliente aqui..." />
+          <strong>Qual o status do pagamento?</strong>
+          <br />
 
-          <ul>
-            <li>Avatar</li>
-            <strong>Nome do Cliente</strong>
-          </ul>
-          <ul>
-            <li>Avatar</li>
-            <strong>Nome do Cliente</strong>
-          </ul>
-          <ul>
-            <li>Avatar</li>
-            <strong>Nome do Cliente</strong>
-          </ul>
-          <ul>
-            <li>Avatar</li>
-            <strong>Nome do Cliente</strong>
-          </ul>
-          <ul>
-            <li>Avatar</li>
-            <strong>Nome do Cliente</strong>
-          </ul>
-          <p>
-            3 clientes selecionados <button>Avançar</button>
-          </p>
+          <input type="checkbox" />
+          <label>Não está pago</label>
+          <br />
+          <input type="checkbox" />
+          <label>Já está pago</label>
+          <br />
+
+          <strong>Em qual data foi realizado?</strong>
+          <input type="date" placeholder="Data do pedido" />
+
+          <button>Finalizar</button>
         </section>
       </div>
     </div>
