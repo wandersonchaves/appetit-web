@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { Button, InputGroup, FormControl } from "react-bootstrap";
 import "./styles.css";
 import logoImg from "../../assets/logo.svg";
 
@@ -17,16 +17,30 @@ export default function Logon() {
             quanto isso pode ajudar no seu dia.
           </h3>
 
-          <input type="text" placeholder="Email" />
-          <input type="text" placeholder="Senha" />
+          <div>
+            <InputGroup className="mb-3">
+              <FormControl
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="Email"
+              />
+            </InputGroup>
+            <br />
+            <InputGroup className="mb-3">
+              <FormControl
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="Senha"
+              />
+            </InputGroup>
+            <br />
+          </div>
 
           <Link className="back-link" to="/register">
             NÃO TENHO CADASTRO
           </Link>
 
-          <button className="button" type="submit">
-            Entrar
-          </button>
+          <Button variant="primary">Entrar</Button>
 
           <p>Infoway Gestão em Saúde &copy;, 2019.</p>
         </form>
