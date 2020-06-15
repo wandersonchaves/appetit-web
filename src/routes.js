@@ -8,6 +8,7 @@ import Order from "./pages/Order";
 import orderShow from "./pages/orderShow";
 import Products from "./pages/Products";
 import productDetails from "./pages/productDetails";
+import productsFinished from "./pages/productsFinished";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -32,6 +33,7 @@ export default function Routes() {
         <Route path="/order/show" component={orderShow} />
         <Route exact path="/products" component={Products} />
         <Route path="/products/details" component={productDetails} />
+        <Route path="/products/finished" component={productsFinished} />
         <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
       </Switch>
     </BrowserRouter>
