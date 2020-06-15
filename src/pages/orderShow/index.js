@@ -6,7 +6,7 @@ import logoImg from "../../assets/logo-white.svg";
 
 export default function Show() {
   return (
-    <div className="register-container">
+    <div className="show-container">
       <div className="content">
         <section className="nav">
           <img src={logoImg} alt="Logo Appetit" />

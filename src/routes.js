@@ -6,6 +6,7 @@ import Logon from "./pages/Logon";
 import Register from "./pages/Register";
 import Order from "./pages/Order";
 import orderShow from "./pages/orderShow";
+import Products from "./pages/Products";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -28,6 +29,7 @@ export default function Routes() {
         <Route path="/register" component={Register} />
         <Route exact path="/order" component={Order} />
         <Route path="/order/show" component={orderShow} />
+        <Route path="/products" component={Products} />
         <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
       </Switch>
     </BrowserRouter>
