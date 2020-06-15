@@ -5,6 +5,7 @@ import { isAutenticated } from "./auth";
 import Logon from "./pages/Logon";
 import Register from "./pages/Register";
 import Order from "./pages/Order";
+import orderShow from "./pages/orderShow";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -25,7 +26,8 @@ export default function Routes() {
       <Switch>
         <Route exact path="/" component={Logon} />
         <Route path="/register" component={Register} />
-        <Route path="/order" component={Order} />
+        <Route exact path="/order" component={Order} />
+        <Route path="/order/show" component={orderShow} />
         <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
       </Switch>
     </BrowserRouter>
