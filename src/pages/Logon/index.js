@@ -1,24 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, InputGroup, FormControl } from "react-bootstrap";
-import "./styles.css";
+import { InputGroup, FormControl } from "react-bootstrap";
 import logoImg from "../../assets/logo.svg";
 
 export default function Logon() {
   return (
-    <div className="logon-container">
+    <div className="logon-container col-md-5 text-center">
       <section className="form">
-        <img src={logoImg} alt="Logo Appetit" />
+        <img className="mt-5" src={logoImg} alt="Logo Appetit" />
 
         <form>
-          <h1>Seja bem-vindo!</h1>
-          <h3>
+          <h1 className="mt-3">Seja bem-vindo!</h1>
+          <p className="text-secondary">
             Nós sabemos a importância de estar sempre de barriga cheia e o
             quanto isso pode ajudar no seu dia.
-          </h3>
+          </p>
 
-          <div>
-            <InputGroup className="mb-3">
+          <div className="mt-5">
+            <InputGroup className="mb-auto">
               <FormControl
                 aria-label="Default"
                 aria-describedby="inputGroup-sizing-default"
@@ -36,13 +35,18 @@ export default function Logon() {
             <br />
           </div>
 
-          <Link className="back-link" to="/register">
+          <Link className="text-dark " to="/register">
             NÃO TENHO CADASTRO
           </Link>
+          <br />
 
-          <Button variant="primary">Entrar</Button>
+          <Link className="button" to="/order">
+            Entrar
+          </Link>
 
-          <p>Infoway Gestão em Saúde &copy;, 2019.</p>
+          <p className="mt-5 text-black-50">
+            Infoway Gestão em Saúde &copy;, 2019.
+          </p>
         </form>
       </section>
     </div>

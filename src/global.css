@@ -33,11 +33,11 @@ form input {
 }
 
 .button {
-  width: 100%;
+  width: 328px;
   height: 60px;
-  background: #e02041;
+  background: #ff8822;
   border: 0;
-  border-radius: 8px;
+  border-radius: 100px;
   color: #fff;
   font-weight: 700;
   margin-top: 16px;

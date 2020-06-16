@@ -9,10 +9,10 @@ import logoImg from "../../assets/logo-white.svg";
 export default function Order() {
   return (
     <div className="order-container">
-      <section className="nav">
+      <section className="nav form">
         <img src={logoImg} alt="Logo Appetit" />
 
-        <nav>
+        <nav className="mt-5">
           <ul>
             <li>PEDIDOS</li>
             <ul>
