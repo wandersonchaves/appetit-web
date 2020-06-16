@@ -30,8 +30,12 @@ export default function Products() {
 
           <p>Pedido feito com sucesso!</p>
 
-          <button>VOLTAR PARA A LISTA DE PEDIDOS</button>
-          <button>FAZER NOVO PEDIDO</button>
+          <button type="button" className="btn btn-outline-dark">
+            VOLTAR PARA A LISTA DE PEDIDOS
+          </button>
+          <button type="button" className="btn btn-outline-primary">
+            FAZER NOVO PEDIDO
+          </button>
         </section>
       </div>
     </div>

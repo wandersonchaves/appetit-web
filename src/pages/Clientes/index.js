@@ -1,4 +1,5 @@
 import React from "react";
+import { InputGroup, FormControl } from "react-bootstrap";
 
 import "./styles.css";
 import logoImg from "../../assets/logo-white.svg";
@@ -49,7 +50,16 @@ export default function Products() {
           <p>Barra de Progresso</p>
 
           <strong>Para quem você está vendendo?</strong>
-          <input type="text" placeholder="Procure o cliente aqui..." />
+          <div>
+            <InputGroup className="mb-auto">
+              <FormControl
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="Procure o cliente aqui..."
+              />
+            </InputGroup>
+            <br />
+          </div>
 
           <ul>
             <li>Avatar</li>

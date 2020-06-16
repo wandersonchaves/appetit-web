@@ -32,25 +32,16 @@ form input {
   padding: 0 24px;
 }
 
-.button {
-  width: 328px;
-  height: 60px;
-  background: #ff8822;
-  border: 0;
-  border-radius: 100px;
-  color: #fff;
-  font-weight: 700;
-  margin-top: 16px;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 60px;
-  transition: filter 0.2s;
+ul li {
+  list-style: none;
 }
 
-.button:hover {
-  filter: brightness(90%);
+.btn-outline-primary {
+  width: 328px;
+  height: 48px;
+  background: #ff8822 !important;
+  border-radius: 100px !important;
+  margin-top: 16px;
 }
 
 .back-link {

@@ -78,7 +78,7 @@ export default function Products() {
           <strong>Em qual data foi realizado?</strong>
           <input type="date" placeholder="Data do pedido" />
 
-          <button>Finalizar</button>
+          <button className="button">Finalizar</button>
         </section>
       </div>
     </div>

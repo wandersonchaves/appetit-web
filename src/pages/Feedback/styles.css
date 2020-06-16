@@ -74,3 +74,9 @@
   color: #737380;
   line-height: 32px;
 }
+
+.btn-outline-dark {
+  width: 328px !important;
+  height: 48px !important;
+  border-radius: 100px !important;
+}
