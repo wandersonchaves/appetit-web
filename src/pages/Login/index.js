@@ -1,61 +1,85 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { InputGroup, FormControl } from "react-bootstrap";
+import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 import logoImg from "../../assets/logo.svg";
 
-export default function Logon() {
+const useStyles = makeStyles((theme) => ({
+  logo: {
+    display: "flex",
+    justifyContent: "center",
+  },
+}));
+
+const MyBuytton = withStyles((theme) => ({
+  root: {
+    width: "70%",
+  },
+}))(Button);
+
+export default function Login() {
+  const classes = useStyles();
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col modal-dialog-centered text-center justify-content-center">
-          <section className="form">
-            <Link to="/">
-              <img className="mt-5" src={logoImg} alt="Logo Appetit" />
-            </Link>
-
-            <form>
-              <h1 className="mt-3">Seja bem-vindo!</h1>
-              <p className="text-secondary">
-                Nós sabemos a importância de estar sempre de barriga cheia e o
-                quanto isso pode ajudar no seu dia.
-              </p>
-
-              <div className="mt-5">
-                <InputGroup className="mb-auto">
-                  <FormControl
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    placeholder="Email"
-                  />
-                </InputGroup>
-                <br />
-                <InputGroup className="mb-3">
-                  <FormControl
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    placeholder="Senha"
-                  />
-                </InputGroup>
-                <br />
-              </div>
-
-              <Link className="text-dark" to="/register">
-                NÃO TENHO CADASTRO
-              </Link>
-              <br />
-
-              <Link className="btn btn-outline-primary" to="/home">
-                Entrar
-              </Link>
-
-              <p className="mt-5 text-black-50">
-                Infoway Gestão em Saúde &copy;, 2019.
-              </p>
-            </form>
-          </section>
+    <Container maxWidth="xs">
+      <Box my={4}>
+        <div className={classes.logo}>
+          <img src={logoImg} alt="Logo Appetit" />
         </div>
-      </div>
-    </div>
+        <Box my={2}>
+          <Typography component="h1" variant="h6" align="center">
+            Seja bem-vindo!
+          </Typography>
+        </Box>
+        <Box mb={4}>
+          <Typography variant="subtitle1" color="textSecondary" align="center">
+            Nós sabemos a importância de estar sempre de barriga cheia e o
+            quanto isso pode ajudar no seu dia.
+          </Typography>
+        </Box>
+        <div>
+          <form noValidate autoComplete="off">
+            <Box mt={2} width="100%">
+              <TextField
+                fullWidth
+                id="email"
+                type="email"
+                label="Email"
+                variant="outlined"
+                name="email"
+              />
+            </Box>
+            <Box mt={2} width="100%">
+              <TextField
+                fullWidth
+                id="password"
+                type="password"
+                label="Senha"
+                variant="outlined"
+                name="password"
+              />
+            </Box>
+            <Box mt={4}>
+              <Button href="#" fullWidth>
+                RECUPERAR MINHA SENHA
+              </Button>
+            </Box>
+            <Box my={4} display="flex" justifyContent="center">
+              <MyBuytton variant="contained" color="primary" disableElevation>
+                ENTRAR
+              </MyBuytton>
+            </Box>
+            <Box>
+              <Typography align="center" color="textSecondary">
+                Infoway Gestão em Saúde ©, {new Date().getFullYear()}.
+              </Typography>
+            </Box>
+          </form>
+        </div>
+      </Box>
+    </Container>
   );
 }
