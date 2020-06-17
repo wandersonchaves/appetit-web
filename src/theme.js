@@ -7,7 +7,7 @@ const theme = createMuiTheme({
       main: orange[700],
     },
     background: {
-      default: "#fff",
+      default: "#fafafa",
     },
   },
   overrides: {

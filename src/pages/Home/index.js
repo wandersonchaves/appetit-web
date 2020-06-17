@@ -1,10 +1,43 @@
 import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import { useHistory } from "react-router-dom";
+
 import Layout from "../../components/Layout";
 
+const NovoPedidoButton = withStyles((theme) => ({
+  root: {
+    borderRadius: theme.shape.borderRadius,
+    justifyContent: "flex-start",
+    backgroundColor: "#fff",
+  },
+}))(Button);
+
 export default function Home() {
+  const history = useHistory();
+
   return (
     <Layout>
-      <h1>Home</h1>
+      <Box mx={5}>
+        <Box>
+          <Typography component="h1" variant="h5">
+            Olá, Vanusa!
+          </Typography>
+        </Box>
+        <Box>
+          <NovoPedidoButton
+            startIcon={<AddIcon color="primary" />}
+            fullWidth
+            variant="contained"
+            onClick={() => history.push("/products")}
+          >
+            Fazer Novo Pedido
+          </NovoPedidoButton>
+        </Box>
+      </Box>
     </Layout>
   );
 }

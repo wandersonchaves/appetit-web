@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import ListAltRoundedIcon from "@material-ui/icons/ListAltRounded";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import { Typography } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import Logo from "./Logo";
 
 const useStyles = makeStyles((theme) => ({
