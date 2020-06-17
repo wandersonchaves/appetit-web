@@ -31,7 +31,7 @@ export default function Products() {
                 </li>
               </ul>
               <li>
-                <Link to="/clients-selected">
+                <Link to="/clients">
                   <MdPeople size={20} />
                   CLIENTES
                 </Link>
@@ -42,7 +42,7 @@ export default function Products() {
           </nav>
         </div>
 
-        <div className="col modal-dialog-centered justify-content-center">
+        <div className="col">
           <section className="content">
             <h1>
               <Link to="/products">
@@ -88,7 +88,7 @@ export default function Products() {
           </section>
         </div>
 
-        <div className="col modal-dialog-centered text-center justify-content-center">
+        <div className="col">
           <section className="content-aux">
             <h1>Informações para o pedido</h1>
             <p>Preencha as informações abaixo para concluir esta venda.</p>

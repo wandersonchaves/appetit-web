@@ -18,21 +18,21 @@ export default function Products() {
 
             <ul>
               <li>
-                <Link to="/order">
+                <Link to="/home">
                   <MdList size={25} />
                   PEDIDOS
                 </Link>
               </li>
               <ul>
                 <li>
-                  <Link to="/order/abertos">EM ABERTOS</Link>
+                  <Link to="/order/open">EM ABERTOS</Link>
                 </li>
                 <li>
-                  <Link to="/order/encerrados">ENCERRADOS</Link>
+                  <Link to="/order/closed">ENCERRADOS</Link>
                 </li>
               </ul>
               <li>
-                <Link to="/clientes">
+                <Link to="/clients">
                   <MdPeople size={20} />
                   CLIENTES
                 </Link>
@@ -43,8 +43,8 @@ export default function Products() {
           </nav>
         </div>
 
-        <div className="col modal-dialog-centered text-center justify-content-center">
-          <section>
+        <div className="col">
+          <section className="content">
             <img src={feedback} alt="Feedback" />
 
             <p>Pedido feito com sucesso!</p>

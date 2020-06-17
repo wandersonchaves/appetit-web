@@ -67,9 +67,9 @@ export default function Register() {
                 </InputGroup>
                 <br />
               </div>
-              <button className="btn btn-outline-primary" type="submit">
+              <Link to="/" className="btn btn-outline-primary">
                 Cadastrar
-              </button>
+              </Link>
             </form>
           </div>
         </div>

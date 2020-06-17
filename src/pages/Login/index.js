@@ -45,7 +45,7 @@ export default function Logon() {
               </Link>
               <br />
 
-              <Link className="btn btn-outline-primary" to="/order">
+              <Link className="btn btn-outline-primary" to="/home">
                 Entrar
               </Link>
 
