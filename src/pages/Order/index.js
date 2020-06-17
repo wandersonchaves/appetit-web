@@ -39,69 +39,69 @@ export default function Order() {
 
             <p className="copy">Infoway Gestão em Saúde &copy;, 2019.</p>
           </nav>
+        </div>
 
-          <div className="col modal-dialog-centered text-center justify-content-center">
-            <section className="content">
-              <h1>Olá, Teste!</h1>
+        <div className="col modal-dialog-centered text-center justify-content-center">
+          <section>
+            <h1>Olá, Teste!</h1>
 
-              <input
-                className="form-control"
-                type="text"
-                placeholder="FAZER NOVO PEDIDO"
-              />
-              <br />
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Procure o pedido aqui..."
-              />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="FAZER NOVO PEDIDO"
+            />
+            <br />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Procure o pedido aqui..."
+            />
 
-              <p>Data, Você vendeu R$ Valor</p>
+            <p>Data, Você vendeu R$ Valor</p>
 
-              <ul>
-                <Link to="/order/show">
-                  <li>
-                    <button>
-                      <MdPerson size={18} />
-                    </button>
-                    <strong>Nome do Cliente</strong>
-                    <p>Pedido do Cliente</p>
-                    <p>Valor do Pedido</p>
-                  </li>
-                </Link>
-                <Link to="/order/show">
-                  <li>
-                    <button>
-                      <MdPerson size={18} />
-                    </button>
-                    <strong>Nome do Cliente</strong>
-                    <p>Pedido do Cliente</p>
-                    <p>Valor do Pedido</p>
-                  </li>
-                </Link>
-                <Link to="/order/show">
-                  <li>
-                    <button>
-                      <MdPerson size={18} />
-                    </button>
-                    <strong>Nome do Cliente</strong>
-                    <p>Pedido do Cliente</p>
-                    <p>Valor do Pedido</p>
-                  </li>
-                </Link>
-                <Link to="/order/show">
-                  <li>
-                    <button>
-                      <MdPerson size={18} />
-                    </button>
-                    <strong>Nome do Cliente</strong>
-                    <p>Pedido do Cliente</p>
-                    <p>Valor do Pedido</p>
-                  </li>
-                </Link>
-              </ul>
-            </section>
-          </div>
+            <ul>
+              <Link to="/order/show">
+                <li>
+                  <button>
+                    <MdPerson size={18} />
+                  </button>
+                  <strong>Nome do Cliente</strong>
+                  <p>Pedido do Cliente</p>
+                  <p>Valor do Pedido</p>
+                </li>
+              </Link>
+              <Link to="/order/show">
+                <li>
+                  <button>
+                    <MdPerson size={18} />
+                  </button>
+                  <strong>Nome do Cliente</strong>
+                  <p>Pedido do Cliente</p>
+                  <p>Valor do Pedido</p>
+                </li>
+              </Link>
+              <Link to="/order/show">
+                <li>
+                  <button>
+                    <MdPerson size={18} />
+                  </button>
+                  <strong>Nome do Cliente</strong>
+                  <p>Pedido do Cliente</p>
+                  <p>Valor do Pedido</p>
+                </li>
+              </Link>
+              <Link to="/order/show">
+                <li>
+                  <button>
+                    <MdPerson size={18} />
+                  </button>
+                  <strong>Nome do Cliente</strong>
+                  <p>Pedido do Cliente</p>
+                  <p>Valor do Pedido</p>
+                </li>
+              </Link>
+            </ul>
+          </section>
         </div>
       </div>
     </div>
