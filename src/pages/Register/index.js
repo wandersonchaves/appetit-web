@@ -11,7 +11,9 @@ export default function Register() {
         <div className="col modal-dialog-centered text-center justify-content-center">
           <div className="content">
             <section>
-              <img src={logoImg} alt="Logo Appetit" />
+              <Link to="/">
+                <img src={logoImg} alt="Logo Appetit" />
+              </Link>
               <h1>Cadastro</h1>
               <p>
                 Faça seu cadastro, entre na plataforma e faça já seu pedido.

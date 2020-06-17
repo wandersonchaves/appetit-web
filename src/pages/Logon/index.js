@@ -10,7 +10,9 @@ export default function Logon() {
       <div className="row">
         <div className="col modal-dialog-centered text-center justify-content-center">
           <section className="form">
-            <img className="mt-5" src={logoImg} alt="Logo Appetit" />
+            <Link to="/">
+              <img className="mt-5" src={logoImg} alt="Logo Appetit" />
+            </Link>
 
             <form>
               <h1 className="mt-3">Seja bem-vindo!</h1>

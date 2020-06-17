@@ -12,8 +12,9 @@ export default function Products() {
       <div className="row">
         <div className="col modal-dialog-centered text-center justify-content-center">
           <nav>
-            <img src={logoImg} alt="Logo Appetit" />
-
+            <Link to="/">
+              <img src={logoImg} alt="Logo Appetit" />
+            </Link>
             <ul>
               <li>
                 <Link to="/order">
