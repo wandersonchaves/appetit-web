@@ -38,7 +38,7 @@ export default function Logon() {
                 <br />
               </div>
 
-              <Link className="text-dark " to="/register">
+              <Link className="text-dark" to="/register">
                 NÃO TENHO CADASTRO
               </Link>
               <br />

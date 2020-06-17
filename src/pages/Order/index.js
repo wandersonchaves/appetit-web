@@ -1,82 +1,109 @@
 import React from "react";
 import { MdPerson } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { MdList, MdPeople } from "react-icons/md";
 
-import "../../global.css";
 import "./styles.css";
 import logoImg from "../../assets/logo-white.svg";
 
 export default function Order() {
   return (
-    <div className="order-container">
-      <section className="nav form">
-        <img src={logoImg} alt="Logo Appetit" />
+    <div className="container">
+      <div className="row">
+        <div className="col modal-dialog-centered text-center justify-content-center">
+          <nav>
+            <img src={logoImg} alt="Logo Appetit" />
 
-        <nav className="mt-5">
-          <ul>
-            <li>PEDIDOS</li>
             <ul>
-              <li>EM ABERTOS</li>
-              <li>ENCERRADOS</li>
+              <li>
+                <Link to="/order">
+                  <MdList size={25} />
+                  PEDIDOS
+                </Link>
+              </li>
+              <ul>
+                <li>
+                  <Link to="/order/abertos">EM ABERTOS</Link>
+                </li>
+                <li>
+                  <Link to="/order/encerrados">ENCERRADOS</Link>
+                </li>
+              </ul>
+              <li>
+                <Link to="/clientes">
+                  <MdPeople size={20} />
+                  CLIENTES
+                </Link>
+              </li>
             </ul>
-            <li>CLIENTES</li>
-          </ul>
-        </nav>
 
-        <p>Infoway Gestão em Saúde &copy;, 2019.</p>
-      </section>
+            <p className="copy">Infoway Gestão em Saúde &copy;, 2019.</p>
+          </nav>
 
-      <section className="content">
-        <h1>Olá, Teste!</h1>
+          <div className="col modal-dialog-centered text-center justify-content-center">
+            <section className="content">
+              <h1>Olá, Teste!</h1>
 
-        <input type="text" placeholder="FAZER NOVO PEDIDO" />
-        <input type="text" placeholder="Procure o pedido aqui..." />
+              <input
+                className="form-control"
+                type="text"
+                placeholder="FAZER NOVO PEDIDO"
+              />
+              <br />
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Procure o pedido aqui..."
+              />
 
-        <p>Data, Você vendeu R$ Valor</p>
+              <p>Data, Você vendeu R$ Valor</p>
 
-        <ul>
-          <Link to="/order/show">
-            <li>
-              <button>
-                <MdPerson size={18} />
-              </button>
-              <strong>Nome do Cliente</strong>
-              <p>Pedido do Cliente</p>
-              <p>Valor do Pedido</p>
-            </li>
-          </Link>
-          <Link to="/order/show">
-            <li>
-              <button>
-                <MdPerson size={18} />
-              </button>
-              <strong>Nome do Cliente</strong>
-              <p>Pedido do Cliente</p>
-              <p>Valor do Pedido</p>
-            </li>
-          </Link>
-          <Link to="/order/show">
-            <li>
-              <button>
-                <MdPerson size={18} />
-              </button>
-              <strong>Nome do Cliente</strong>
-              <p>Pedido do Cliente</p>
-              <p>Valor do Pedido</p>
-            </li>
-          </Link>
-          <Link to="/order/show">
-            <li>
-              <button>
-                <MdPerson size={18} />
-              </button>
-              <strong>Nome do Cliente</strong>
-              <p>Pedido do Cliente</p>
-              <p>Valor do Pedido</p>
-            </li>
-          </Link>
-        </ul>
-      </section>
+              <ul>
+                <Link to="/order/show">
+                  <li>
+                    <button>
+                      <MdPerson size={18} />
+                    </button>
+                    <strong>Nome do Cliente</strong>
+                    <p>Pedido do Cliente</p>
+                    <p>Valor do Pedido</p>
+                  </li>
+                </Link>
+                <Link to="/order/show">
+                  <li>
+                    <button>
+                      <MdPerson size={18} />
+                    </button>
+                    <strong>Nome do Cliente</strong>
+                    <p>Pedido do Cliente</p>
+                    <p>Valor do Pedido</p>
+                  </li>
+                </Link>
+                <Link to="/order/show">
+                  <li>
+                    <button>
+                      <MdPerson size={18} />
+                    </button>
+                    <strong>Nome do Cliente</strong>
+                    <p>Pedido do Cliente</p>
+                    <p>Valor do Pedido</p>
+                  </li>
+                </Link>
+                <Link to="/order/show">
+                  <li>
+                    <button>
+                      <MdPerson size={18} />
+                    </button>
+                    <strong>Nome do Cliente</strong>
+                    <p>Pedido do Cliente</p>
+                    <p>Valor do Pedido</p>
+                  </li>
+                </Link>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

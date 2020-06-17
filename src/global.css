@@ -32,6 +32,35 @@ form input {
   padding: 0 24px;
 }
 
+nav {
+  width: 342px;
+  background: #ff8822;
+}
+
+nav img {
+  /* margin-left: 115px; */
+  margin-top: 56px;
+  margin-bottom: 80px;
+}
+
+nav ul li {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* modal-dialog-centered text-center justify-content-center */
+}
+
+nav ul li:hover,
+nav ul li:active {
+  background-color: white;
+}
+
+nav .copy {
+  color: #fff;
+  margin-top: 280px;
+}
+
 ul li {
   list-style: none;
 }

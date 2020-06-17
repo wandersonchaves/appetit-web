@@ -1,19 +1,14 @@
-.order-container {
-  width: 100%;
-  max-width: 1180;
-  padding: 0 30px;
-  height: 100vh;
-  margin: 32px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+nav {
+  width: 342px;
+  background: #ff8822;
 }
 
-section.nav {
-  height: 100vh;
-  width: 342px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ff8822;
+nav img {
+  /* margin-left: 115px; */
+  margin-top: 56px;
+  margin-bottom: 80px;
+}
+
+nav .copy {
+  margin-top: 280px;
 }
