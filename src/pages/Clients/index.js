@@ -1,7 +1,6 @@
 import React from "react";
-import { InputGroup, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { MdList, MdPeople } from "react-icons/md";
+import { MdList, MdPeople, MdPerson, MdArrowBack } from "react-icons/md";
 
 import "./styles.css";
 import logoImg from "../../assets/logo-white.svg";
@@ -12,25 +11,27 @@ export default function Products() {
       <div className="row">
         <div className="col modal-dialog-centered text-center justify-content-center">
           <nav>
-            <img src={logoImg} alt="Logo Appetit" />
+            <Link to="/">
+              <img src={logoImg} alt="Logo Appetit" />
+            </Link>
 
             <ul>
               <li>
-                <Link to="/order">
+                <Link to="/home">
                   <MdList size={25} />
                   PEDIDOS
                 </Link>
               </li>
               <ul>
                 <li>
-                  <Link to="/order/abertos">EM ABERTOS</Link>
+                  <Link to="/order/open">EM ABERTOS</Link>
                 </li>
                 <li>
-                  <Link to="/order/encerrados">ENCERRADOS</Link>
+                  <Link to="/order/closed">ENCERRADOS</Link>
                 </li>
               </ul>
               <li>
-                <Link to="/clientes">
+                <Link to="/clients-selected">
                   <MdPeople size={20} />
                   CLIENTES
                 </Link>
@@ -41,22 +42,49 @@ export default function Products() {
           </nav>
         </div>
 
-        <div className="col modal-dialog-centered text-center justify-content-center">
-          <section className="contents">
-            <h1>Novo pedido</h1>
+        <div className="col modal-dialog-centered justify-content-center">
+          <section className="content">
+            <h1>
+              <Link to="/products">
+                <MdArrowBack />
+              </Link>
+              <br />
+              Novo pedido
+              <br />
+            </h1>
 
             <p>Produtos</p>
 
-            <ul>
-              <li>Avatar</li>
-              <li>
-                <strong>2x Cuscuz Completo</strong>
-              </li>
-              <li>Observações</li>
-            </ul>
-
-            <strong>Total</strong>
-            <p>R$ Preço</p>
+            <div className="product">
+              <img src={<MdList />} />
+              <strong>Cuscuz Simples</strong>
+              <span>Value</span>
+              <p>Observações</p>
+            </div>
+            <div className="product">
+              <img src={<MdList />} />
+              <strong>Cuscuz Simples</strong>
+              <span>Value</span>
+              <p>Observações</p>
+            </div>
+            <div className="product">
+              <img src={<MdList />} />
+              <strong>Cuscuz Simples</strong>
+              <span>Value</span>
+              <p>Observações</p>
+            </div>
+            <div className="product">
+              <img src={<MdList />} />
+              <strong>Cuscuz Simples</strong>
+              <span>Value</span>
+              <p>Observações</p>
+            </div>
+            <div className="divisor"></div>
+            <div className="total">
+              <p>
+                Total <span>Total</span>
+              </p>
+            </div>
           </section>
         </div>
 
@@ -70,13 +98,11 @@ export default function Products() {
 
             <strong>Para quem você está vendendo?</strong>
             <div>
-              <InputGroup className="mb-auto">
-                <FormControl
-                  aria-label="Default"
-                  aria-describedby="inputGroup-sizing-default"
-                  placeholder="Procure o cliente aqui..."
-                />
-              </InputGroup>
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Procure o cliente aqui..."
+              />
               <br />
             </div>
 

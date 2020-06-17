@@ -1,48 +1,27 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { isAutenticated } from "./auth";
-import Logon from "./pages/Logon";
+import Login from "./pages/Logon";
 import Register from "./pages/Register";
+import Home from "./pages/Home";
 import Order from "./pages/Order";
-import orderShow from "./pages/orderShow";
 import Products from "./pages/Products";
-import productDetails from "./pages/productDetails";
-import productsFinished from "./pages/productsFinished";
-import Clientes from "./pages/Clientes";
-import clientesSelected from "./pages/clientesSelected";
+import Clients from "./pages/Clients";
 import Pay from "./pages/Pay";
 import Feedback from "./pages/Feedback";
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      isAutenticated() ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-      )
-    }
-  />
-);
 
 export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Logon} />
+        <Route exact path="/" component={Login} />
         <Route path="/register" component={Register} />
-        <Route exact path="/order" component={Order} />
-        <Route path="/order/show" component={orderShow} />
+        <Route exact path="/home" component={Home} />
+        <Route path="/order/:order" component={Order} />
         <Route exact path="/products" component={Products} />
-        <Route path="/products/details" component={productDetails} />
-        <Route path="/products/finished" component={productsFinished} />
-        <Route exact path="/clientes" component={Clientes} />
-        <Route path="/clientes/selected" component={clientesSelected} />
+        <Route exact path="/clients" component={Clients} />
         <Route path="/pay" component={Pay} />
         <Route path="/feedback" component={Feedback} />
-        <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
       </Switch>
     </BrowserRouter>
   );

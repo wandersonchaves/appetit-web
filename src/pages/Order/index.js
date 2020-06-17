@@ -1,12 +1,11 @@
 import React from "react";
-import { MdPerson } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { MdList, MdPeople } from "react-icons/md";
 
 import "./styles.css";
 import logoImg from "../../assets/logo-white.svg";
 
-export default function Order() {
+export default function Show() {
   return (
     <div className="container">
       <div className="row">
@@ -45,63 +44,22 @@ export default function Order() {
 
         <div className="col modal-dialog-centered text-center justify-content-center">
           <section>
-            <h1>Olá, Teste!</h1>
-
-            <input
-              className="form-control"
-              type="text"
-              placeholder="FAZER NOVO PEDIDO"
-            />
-            <br />
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Procure o pedido aqui..."
-            />
-
-            <p>Data, Você vendeu R$ Valor</p>
-
+            <h1>Pedidos do Cliente</h1>
             <ul>
-              <Link to="/order/show">
-                <li>
-                  <button>
-                    <MdPerson size={18} />
-                  </button>
-                  <strong>Nome do Cliente</strong>
-                  <p>Pedido do Cliente</p>
-                  <p>Valor do Pedido</p>
-                </li>
-              </Link>
-              <Link to="/order/show">
-                <li>
-                  <button>
-                    <MdPerson size={18} />
-                  </button>
-                  <strong>Nome do Cliente</strong>
-                  <p>Pedido do Cliente</p>
-                  <p>Valor do Pedido</p>
-                </li>
-              </Link>
-              <Link to="/order/show">
-                <li>
-                  <button>
-                    <MdPerson size={18} />
-                  </button>
-                  <strong>Nome do Cliente</strong>
-                  <p>Pedido do Cliente</p>
-                  <p>Valor do Pedido</p>
-                </li>
-              </Link>
-              <Link to="/order/show">
-                <li>
-                  <button>
-                    <MdPerson size={18} />
-                  </button>
-                  <strong>Nome do Cliente</strong>
-                  <p>Pedido do Cliente</p>
-                  <p>Valor do Pedido</p>
-                </li>
-              </Link>
+              <li>Data</li>
+              <ul>
+                <li>Avatar</li>
+                <li>Pedido</li>
+                <li>Preço</li>
+              </ul>
+            </ul>
+            <ul>
+              <li>Data</li>
+              <ul>
+                <li>Avatar</li>
+                <li>Pedido</li>
+                <li>Preço</li>
+              </ul>
             </ul>
           </section>
         </div>
