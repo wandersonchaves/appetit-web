@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 import logoImg from "../../assets/logo.svg";
 
@@ -23,6 +24,22 @@ const MyBuytton = withStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
+  const history = useHistory();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const isValid = () => {
+    return email.trim().length > 0 && password.trim().length > 0;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (isValid()) {
+      history.push("/home");
+    }
+  };
+
   return (
     <Container maxWidth="xs">
       <Box my={4}>
@@ -41,7 +58,7 @@ export default function Login() {
           </Typography>
         </Box>
         <div>
-          <form noValidate autoComplete="off">
+          <form noValidate autoComplete="off" onSubmit={handleSubmit}>
             <Box mt={2} width="100%">
               <TextField
                 fullWidth
@@ -50,6 +67,10 @@ export default function Login() {
                 label="Email"
                 variant="outlined"
                 name="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </Box>
             <Box mt={2} width="100%">
@@ -60,6 +81,10 @@ export default function Login() {
                 label="Senha"
                 variant="outlined"
                 name="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
             </Box>
             <Box mt={4}>
@@ -68,7 +93,13 @@ export default function Login() {
               </Button>
             </Box>
             <Box my={4} display="flex" justifyContent="center">
-              <MyBuytton variant="contained" color="primary" disableElevation>
+              <MyBuytton
+                variant="contained"
+                color="primary"
+                disableElevation
+                disabled={!isValid()}
+                type="submit"
+              >
                 ENTRAR
               </MyBuytton>
             </Box>
