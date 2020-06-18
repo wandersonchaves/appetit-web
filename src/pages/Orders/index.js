@@ -29,6 +29,7 @@ export default function Order() {
           quantity: 2,
           name: "x Bolo frito + Café c/ leite",
           avatar: avatar1,
+          price: "R$ 4.25",
         },
       ],
     },
@@ -40,6 +41,7 @@ export default function Order() {
           quantity: 2,
           name: "x Bolo frito + Café c/ leite",
           avatar: avatar1,
+          price: "R$ 4.25",
         },
       ],
     },
@@ -81,7 +83,7 @@ export default function Order() {
                     <ListItemText
                       id={labelId}
                       primary={`${product.quantity}${product.name}`}
-                      secondary="R$ 4.25"
+                      secondary={product.price}
                     />
                   </ListItem>
                 );
