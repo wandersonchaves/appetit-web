@@ -17,6 +17,10 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 
 import Layout from "../../components/Layout";
+import avatar1 from "../../assets/avatarClients/avatar1.png";
+import avatar2 from "../../assets/avatarClients/avatar2.png";
+import avatar3 from "../../assets/avatarClients/avatar3.png";
+import avatar4 from "../../assets/avatarClients/avatar4.png";
 
 const NovoPedidoButton = withStyles((theme) => ({
   root: {
@@ -29,26 +33,43 @@ const NovoPedidoButton = withStyles((theme) => ({
 export default function Home() {
   const history = useHistory();
 
-  const listClients = [
+  const ordersByDate = [
     {
-      id: 1,
-      name: "Marcel Batista",
-      avatar: "avatar1",
+      date: "13/05/2019",
+      total: "R$ 45.80",
+      clients: [
+        {
+          id: "ord5",
+          name: "Marcel Batista",
+          avatar: avatar1,
+        },
+        {
+          id: "ord4",
+          name: "Fernanda Siqueira",
+          avatar: avatar2,
+        },
+        {
+          id: "ord3",
+          name: "Luiz Oliveira",
+          avatar: avatar3,
+        },
+      ],
     },
     {
-      id: 2,
-      name: "Fernanda Siqueira",
-      avatar: "avatar2",
-    },
-    {
-      id: 3,
-      name: "Luiz Oliveira",
-      avatar: "avatar3",
-    },
-    {
-      id: 4,
-      name: "Ana Virlania",
-      avatar: "avatar4",
+      date: "09/05/2019",
+      total: "R$ 123.50",
+      clients: [
+        {
+          id: "ord2",
+          name: "Ana Virlania",
+          avatar: avatar4,
+        },
+        {
+          id: "ord1",
+          name: "Marcel Batista",
+          avatar: avatar1,
+        },
+      ],
     },
   ];
 
@@ -85,48 +106,46 @@ export default function Home() {
             }}
           />
         </Box>
-        <Box>
-          <List
-            dense
-            subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-                <p>
-                  <strong>13/05/2019</strong>, Você vendeu{" "}
-                  <strong>R$ 25.50</strong>
-                </p>
-              </ListSubheader>
-            }
-          >
-            {listClients.map((value) => {
-              const labelId = `checkbox-list-secondary-label-${value}`;
 
-              return (
-                <Box boxShadow={1} mb={1}>
+        <Box>
+          {ordersByDate.map((order) => (
+            <List
+              dense
+              subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                  <p>
+                    <strong>{order.date}</strong>, Você vendeu{" "}
+                    <strong>{order.total}</strong>
+                  </p>
+                </ListSubheader>
+              }
+            >
+              {order.clients.map((client) => {
+                const labelId = `checkbox-list-secondary-label-${client.id}`;
+
+                return (
                   <ListItem
                     color="#000"
-                    key={value}
+                    key={client.id}
                     button
-                    onClick={() => history.push("/orders/:order")}
+                    onClick={() => history.push(`/orders/${client.id}`)}
                   >
                     <ListItemAvatar>
-                      <Avatar
-                        alt={`Avatar n°${value + 1}`}
-                        src={`/static/images/avatar/${value + 1}.jpg`}
-                      />
+                      <Avatar alt={client.name} src={client.avatar} />
                     </ListItemAvatar>
                     <ListItemText
                       id={labelId}
-                      primary={`Marcel Batista`}
+                      primary={`${client.name}`}
                       secondary="Cuscuz com calabresa, suco de laranja."
                     />
                     <ListItemSecondaryAction>
                       <Typography>R$ 3.50</Typography>
                     </ListItemSecondaryAction>
                   </ListItem>
-                </Box>
-              );
-            })}
-          </List>
+                );
+              })}
+            </List>
+          ))}
         </Box>
       </Box>
     </Layout>

@@ -1,6 +1,8 @@
 import { orange } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
 
+const defaultTheme = createMuiTheme();
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -17,6 +19,15 @@ const theme = createMuiTheme({
       },
       containedPrimary: {
         color: "#fff",
+      },
+    },
+    MuiListItem: {
+      root: {
+        marginTop: 8,
+        marginBottom: 8,
+        backgroundColor: "#FFF",
+        boxShadow: defaultTheme.shadows[2],
+        borderRadius: 5,
       },
     },
   },

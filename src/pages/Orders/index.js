@@ -13,11 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Layout from "../../components/Layout";
 
-const useStyles = makeStyles((theme) => ({
-  listItem: {
-    background: "#FFFFFF",
-  },
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 export default function Order() {
   const history = useHistory();
@@ -55,26 +51,23 @@ export default function Order() {
               const labelId = `checkbox-list-secondary-label-${value}`;
 
               return (
-                <Box boxShadow={1} mb={1}>
-                  <ListItem
-                    className={classes.listItem}
-                    key={value}
-                    button
-                    onClick={() => history.push("/orders/:order")}
-                  >
-                    <ListItemAvatar>
-                      <Avatar
-                        alt={`Avatar n°${value + 1}`}
-                        src={`/static/images/avatar/${value + 1}.jpg`}
-                      />
-                    </ListItemAvatar>
-                    <ListItemText
-                      id={labelId}
-                      primary={`2x Bolo frito + Café c/ leite`}
-                      secondary="R$ 4.25"
+                <ListItem
+                  key={value}
+                  button
+                  onClick={() => history.push("/orders/:order")}
+                >
+                  <ListItemAvatar>
+                    <Avatar
+                      alt={`Avatar n°${value + 1}`}
+                      src={`/static/images/avatar/${value + 1}.jpg`}
                     />
-                  </ListItem>
-                </Box>
+                  </ListItemAvatar>
+                  <ListItemText
+                    id={labelId}
+                    primary={`2x Bolo frito + Café c/ leite`}
+                    secondary="R$ 4.25"
+                  />
+                </ListItem>
               );
             })}
           </List>
