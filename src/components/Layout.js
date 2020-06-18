@@ -6,7 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import ListAltRoundedIcon from "@material-ui/icons/ListAltRounded";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
 import Logo from "./Logo";
+import loggedUser from "../assets/logged-user.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +49,7 @@ export default function Layout({ children }) {
 
   return (
     <Box className={classes.root}>
-      <Grid container spacing={0} className={classes.container}>
+      <Grid container className={classes.container}>
         <Grid item sm={3} className={classes.menu}>
           <Box py={7} display="flex" justifyContent="center">
             <Logo />
@@ -84,7 +86,16 @@ export default function Layout({ children }) {
           </Box>
         </Grid>
         <Grid item sm={9}>
-          {children}
+          <Box
+            height={60}
+            display="flex"
+            justifyContent="flex-end"
+            pt={2}
+            pr={5}
+          >
+            <Avatar alt="Logged user" src={loggedUser} />
+          </Box>
+          <Box>{children}</Box>
         </Grid>
       </Grid>
     </Box>
