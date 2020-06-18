@@ -12,6 +12,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Layout from "../../components/Layout";
+import avatar1 from "../../assets/avatarProducts/avatar1.png";
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -19,11 +20,28 @@ export default function Order() {
   const history = useHistory();
   const classes = useStyles();
 
-  const listProducts = [
+  const productsByDate = [
     {
-      id: 1,
-      name: "2x Bolo frito + Café c/ leite",
-      avatar: "avatar1",
+      date: "13/05/2019",
+      product: [
+        {
+          id: 1,
+          quantity: 2,
+          name: "x Bolo frito + Café c/ leite",
+          avatar: avatar1,
+        },
+      ],
+    },
+    {
+      date: "09/05/2019",
+      product: [
+        {
+          id: 2,
+          quantity: 2,
+          name: "x Bolo frito + Café c/ leite",
+          avatar: avatar1,
+        },
+      ],
     },
   ];
 
@@ -37,40 +55,39 @@ export default function Order() {
           </Typography>
         </Box>
         <Box>
-          <List
-            dense
-            subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-                <p>
-                  <strong>13/05/2019</strong>
-                </p>
-              </ListSubheader>
-            }
-          >
-            {listProducts.map((value) => {
-              const labelId = `checkbox-list-secondary-label-${value}`;
+          {productsByDate.map((order) => (
+            <List
+              dense
+              subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                  <p>
+                    <strong>{order.date}</strong>
+                  </p>
+                </ListSubheader>
+              }
+            >
+              {order.product.map((product) => {
+                const labelId = `checkbox-list-secondary-label-${product}`;
 
-              return (
-                <ListItem
-                  key={value}
-                  button
-                  onClick={() => history.push("/orders/:order")}
-                >
-                  <ListItemAvatar>
-                    <Avatar
-                      alt={`Avatar n°${value + 1}`}
-                      src={`/static/images/avatar/${value + 1}.jpg`}
+                return (
+                  <ListItem
+                    key={product}
+                    button
+                    onClick={() => history.push("/orders/:order")}
+                  >
+                    <ListItemAvatar>
+                      <Avatar alt={product.name} src={product.avatar} />
+                    </ListItemAvatar>
+                    <ListItemText
+                      id={labelId}
+                      primary={`${product.quantity}${product.name}`}
+                      secondary="R$ 4.25"
                     />
-                  </ListItemAvatar>
-                  <ListItemText
-                    id={labelId}
-                    primary={`2x Bolo frito + Café c/ leite`}
-                    secondary="R$ 4.25"
-                  />
-                </ListItem>
-              );
-            })}
-          </List>
+                  </ListItem>
+                );
+              })}
+            </List>
+          ))}
         </Box>
         <Box></Box>
       </Box>
