@@ -77,6 +77,11 @@ export default function Layout({ children }) {
               CLIENTES
             </Typography>
           </Box>
+          <Box mt={14} mb={5}>
+            <Typography align="center" color="textSecondary">
+              Infoway Gestão em Saúde ©, {new Date().getFullYear()}.
+            </Typography>
+          </Box>
         </Grid>
         <Grid item sm={9}>
           {children}

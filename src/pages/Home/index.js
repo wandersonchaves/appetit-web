@@ -32,28 +32,23 @@ export default function Home() {
   const listClients = [
     {
       id: 1,
-      name: "Justine Marshall",
+      name: "Marcel Batista",
       avatar: "avatar1",
     },
     {
       id: 2,
-      name: "Bairam Frootan",
+      name: "Fernanda Siqueira",
       avatar: "avatar2",
     },
     {
       id: 3,
-      name: "Tua Manuera",
+      name: "Luiz Oliveira",
       avatar: "avatar3",
     },
     {
       id: 4,
-      name: "Justine Marshall",
+      name: "Ana Virlania",
       avatar: "avatar4",
-    },
-    {
-      id: 5,
-      name: "Bairam Frootan",
-      avatar: "avatar5",
     },
   ];
 
@@ -106,27 +101,29 @@ export default function Home() {
               const labelId = `checkbox-list-secondary-label-${value}`;
 
               return (
-                <ListItem
-                  color="#000"
-                  key={value}
-                  button
-                  onClick={() => history.push("/orders/:order")}
-                >
-                  <ListItemAvatar>
-                    <Avatar
-                      alt={`Avatar n°${value + 1}`}
-                      src={`/static/images/avatar/${value + 1}.jpg`}
+                <Box boxShadow={1} mb={1}>
+                  <ListItem
+                    color="#000"
+                    key={value}
+                    button
+                    onClick={() => history.push("/orders/:order")}
+                  >
+                    <ListItemAvatar>
+                      <Avatar
+                        alt={`Avatar n°${value + 1}`}
+                        src={`/static/images/avatar/${value + 1}.jpg`}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      id={labelId}
+                      primary={`Marcel Batista`}
+                      secondary="Cuscuz com calabresa, suco de laranja."
                     />
-                  </ListItemAvatar>
-                  <ListItemText
-                    id={labelId}
-                    primary={`Marcel Batista`}
-                    secondary="Cuscuz com calabresa, suco de laranja."
-                  />
-                  <ListItemSecondaryAction>
-                    <Typography>R$ 3.50</Typography>
-                  </ListItemSecondaryAction>
-                </ListItem>
+                    <ListItemSecondaryAction>
+                      <Typography>R$ 3.50</Typography>
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                </Box>
               );
             })}
           </List>
