@@ -16,10 +16,10 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route path="/register" component={Register} />
-        <Route exact path="/home" component={Home} />
+        <Route path="/home" component={Home} />
         <Route path="/orders/:id" component={Orders} />
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/clients" component={Clients} />
+        <Route path="/products" component={Products} />
+        <Route path="/clients" component={Clients} />
         <Route path="/pay" component={Pay} />
         <Route path="/feedback" component={Feedback} />
       </Switch>

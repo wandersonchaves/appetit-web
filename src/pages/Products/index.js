@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Layout from "../../components/Layout";
 import PageTitle from "../../components/PageTItle";
+import imgProducts from "../../assets/img-products.svg";
+import { Typography } from "@material-ui/core";
+import { Switch, useRouteMatch, Route, useParams } from "react-router-dom";
+import OrderInfo from "../OrderInfo";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -17,21 +17,49 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     height: 3,
   },
+  areaImg: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    marginTop: 120,
+  },
 }));
 
 export default function Productos() {
   const classes = useStyles();
+  let { path, url } = useRouteMatch();
 
   return (
     <Layout>
       <Grid container>
         <Grid item sm={6}>
           <PageTitle mx={5} to="/home" title="Novo pedido" />
+          <Box className={classes.areaImg}>
+            <img alt="Img Produtos" src={imgProducts} />
+            <Typography component="h3" variant="subtitle1" align="center">
+              Acompanhe aqui um resumo desta venda
+            </Typography>
+            {/*<Link to={`${url}/pro1`}>Ver produto</Link>*/}
+          </Box>
         </Grid>
-        <Grid item sm={6}></Grid>
+        <Grid item sm={6} style={{ backgroundColor: "#f5f5f5" }}>
+          <Switch>
+            <Route exact path={path}>
+              <OrderInfo />
+            </Route>
+            <Route path={`${path}/:productId`}>
+              <OrderDetail />
+            </Route>
+          </Switch>
+        </Grid>
       </Grid>
     </Layout>
   );
+}
+
+function OrderDetail() {
+  let { productId } = useParams();
+  return <PageTitle mx={5} to="/products" title="Detalhes do pedido" />;
 }
 
 /*

@@ -8,11 +8,12 @@ import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    width: 230,
+    width: "100%",
   },
   titleDivider: {
     backgroundColor: theme.palette.primary.main,
     height: 3,
+    width: 230,
   },
 }));
 
