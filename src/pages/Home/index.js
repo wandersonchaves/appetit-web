@@ -23,6 +23,7 @@ import avatar1 from "../../assets/avatarClients/avatar1.png";
 import avatar2 from "../../assets/avatarClients/avatar2.png";
 import avatar3 from "../../assets/avatarClients/avatar3.png";
 import avatar4 from "../../assets/avatarClients/avatar4.png";
+import PageTitle from "../../components/PageTItle";
 
 const NovoPedidoButton = withStyles((theme) => ({
   root: {
@@ -78,12 +79,7 @@ export default function Home() {
   return (
     <Layout>
       <Box mx={5}>
-        <Box>
-          <Typography component="h1" variant="h5">
-            Olá, Vanusa!
-          </Typography>
-        </Box>
-        <Divider variant="inset" component="li" />
+        <PageTitle mx={0} mb={2} title="Olá, Vanusa" />
 
         <Box>
           <NovoPedidoButton

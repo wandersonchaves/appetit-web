@@ -1,5 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import Layout from "../../components/Layout";
+import PageTitle from "../../components/PageTItle";
+
+const useStyles = makeStyles((theme) => ({
+  title: {
+    width: 230,
+  },
+  titleDivider: {
+    backgroundColor: theme.palette.primary.main,
+    height: 3,
+  },
+}));
+
+export default function Productos() {
+  const classes = useStyles();
+
+  return (
+    <Layout>
+      <Grid container>
+        <Grid item sm={6}>
+          <PageTitle mx={5} to="/home" title="Novo pedido" />
+        </Grid>
+        <Grid item sm={6}></Grid>
+      </Grid>
+    </Layout>
+  );
+}
+
+/*
+import React from "react";
+import { Link } from "react-router-dom";
 import { MdList, MdPeople } from "react-icons/md";
 
 import "./styles.css";
@@ -98,3 +135,4 @@ export default function Products() {
     </div>
   );
 }
+*/
