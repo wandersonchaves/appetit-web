@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import Order from "./pages/Order";
+import Orders from "./pages/Orders";
 import Products from "./pages/Products";
 import Clients from "./pages/Clients";
 import Pay from "./pages/Pay";
@@ -17,7 +17,7 @@ export default function App() {
         <Route exact path="/" component={Login} />
         <Route path="/register" component={Register} />
         <Route exact path="/home" component={Home} />
-        <Route path="/order/:order" component={Order} />
+        <Route path="/orders/:order" component={Orders} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/clients" component={Clients} />
         <Route path="/pay" component={Pay} />
