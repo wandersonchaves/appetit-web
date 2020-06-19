@@ -19,6 +19,7 @@ import PageTitle from "../../components/PageTItle";
 import avatar1 from "../../assets/avatarProducts/avatar1.png";
 import { AppContext, OrderContext } from "../../context";
 import ProductsList from "./ProductsList";
+import ClientsList from "./ClientsList";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -55,25 +56,8 @@ export default function OrderInfo() {
         <Typography variant="subtitle1">Passo {order.step} de 3</Typography>
         <BorderLinearProgress variant="determinate" value={progress} />
       </Box>
-      <Box mx={5} mt={3}>
-        <Typography variant="subtitle1">O que você está vendendo?</Typography>
-      </Box>
-      <Box mx={5} mt={2}>
-        <TextField
-          id="search-order"
-          placeholder="Procure o pedido aqui..."
-          fullWidth
-          style={{ paddingLeft: 4, paddingRight: 4 }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon color="primary" />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
-      <ProductsList />
+      {order.step === 1 && <ProductsList />}
+      {order.step === 2 && <ClientsList />}
     </>
   );
 }

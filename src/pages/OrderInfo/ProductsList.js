@@ -12,9 +12,13 @@ import {
   ListItemSecondaryAction,
   useTheme,
   Button,
+  TextField,
+  InputAdornment,
+  Divider,
 } from "@material-ui/core";
 import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 import ChevronRightOutlinedIcon from "@material-ui/icons/ChevronRightOutlined";
+import SearchIcon from "@material-ui/icons/Search";
 import { useHistory } from "react-router-dom";
 import { OrderContext, AppContext } from "../../context";
 
@@ -47,7 +51,6 @@ const ProductListItem = withStyles((theme) => ({
     borderRadius: 0,
     backgroundColor: "transparent",
     boxShadow: "none",
-    borderBottom: "1px solid #ddd",
   },
 }))(ListItem);
 
@@ -81,6 +84,23 @@ export default function ProductsList() {
 
   return (
     <>
+      <Box mx={5} mt={3}>
+        <Typography variant="subtitle1">O que você está vendendo?</Typography>
+      </Box>
+      <Box mx={5} mt={2}>
+        <TextField
+          id="search-order"
+          placeholder="Procure o pedido aqui..."
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="primary" />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Box>
       <Box px={3} pt={2}>
         {productsByCategory.map((category, i) => (
           <List
@@ -96,26 +116,28 @@ export default function ProductsList() {
               const labelId = `checkbox-list-secondary-label-${product.id}`;
 
               return (
-                <ProductListItem
-                  color="#000"
-                  key={product.id}
-                  button
-                  onClick={() => history.push(`/products/${product.id}`)}
-                >
-                  <ListItemAvatar>
-                    {order.products[product.id] ? (
-                      <Avatar>
-                        <CheckCircleOutlinedIcon />
-                      </Avatar>
-                    ) : (
-                      <Avatar alt={product.name} src={product.avatar} />
-                    )}
-                  </ListItemAvatar>
-                  <ListItemText id={labelId} primary={product.name} />
-                  <ListItemSecondaryAction>
-                    <Typography variant="body2">{product.price}</Typography>
-                  </ListItemSecondaryAction>
-                </ProductListItem>
+                <>
+                  <ProductListItem
+                    key={product.id}
+                    button
+                    onClick={() => history.push(`/products/${product.id}`)}
+                  >
+                    <ListItemAvatar>
+                      {order.products[product.id] ? (
+                        <Avatar>
+                          <CheckCircleOutlinedIcon />
+                        </Avatar>
+                      ) : (
+                        <Avatar alt={product.name} src={product.avatar} />
+                      )}
+                    </ListItemAvatar>
+                    <ListItemText id={labelId} primary={product.name} />
+                    <ListItemSecondaryAction>
+                      <Typography variant="body2">{product.price}</Typography>
+                    </ListItemSecondaryAction>
+                  </ProductListItem>
+                  <Divider light />
+                </>
               );
             })}
           </List>

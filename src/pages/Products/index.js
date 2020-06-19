@@ -56,7 +56,7 @@ const appInitialState = {
 const orderInitialState = {
   step: 1,
   products: {},
-  clients: [],
+  clients: {},
 };
 
 const appReducer = (state, action) => {
@@ -67,8 +67,7 @@ const appReducer = (state, action) => {
       return { ...state, orders: [...state.orders, newOrder] };
     }
     case "add_clients": {
-      console.log(action);
-      return { ...state, clients: action.payload };
+      return { ...state, clients: { ...state.clients, ...action.payload } };
     }
     default:
       return state;
