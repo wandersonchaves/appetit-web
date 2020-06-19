@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import { Link as RouterLink } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 import SearchIcon from "@material-ui/icons/Search";
 import Avatar from "@material-ui/core/Avatar";
@@ -85,7 +86,8 @@ export default function Home() {
             startIcon={<AddIcon color="primary" />}
             fullWidth
             variant="contained"
-            onClick={() => history.push("/products")}
+            component={RouterLink}
+            to="/products"
           >
             Fazer Novo Pedido
           </NovoPedidoButton>
