@@ -102,6 +102,8 @@ export default function OrderInfo() {
 
   const hasProducts = () => Object.keys(order.products).length > 0;
 
+  const progress = Math.ceil(order.step * 33.3);
+
   return (
     <>
       <PageTitle mx={5} title="Informações para o pedido" />
@@ -112,7 +114,7 @@ export default function OrderInfo() {
       </Box>
       <Box mx={5} mt={2}>
         <Typography variant="subtitle1">Passo 1 de 3</Typography>
-        <BorderLinearProgress variant="determinate" value={33} />
+        <BorderLinearProgress variant="determinate" value={progress} />
       </Box>
       <Box mx={5} mt={3}>
         <Typography variant="subtitle1">O que você está vendendo?</Typography>

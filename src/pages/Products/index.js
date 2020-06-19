@@ -54,6 +54,7 @@ const appInitialState = {
 
 // product = {productId, option, quantity, note}
 const orderInitialState = {
+  step: 1,
   products: {},
   clients: [],
 };
