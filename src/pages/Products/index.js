@@ -56,6 +56,9 @@ const appInitialState = {
 // product = {productId, option, quantity, note}
 const orderInitialState = {
   step: 1,
+  status: "",
+  finished: false,
+  payDate: new Date(),
   products: {},
   clients: {},
 };
@@ -63,9 +66,7 @@ const orderInitialState = {
 const appReducer = (state, action) => {
   switch (action.type) {
     case "add_order": {
-      console.log(action);
-      const newOrder = action.payload;
-      return { ...state, orders: [...state.orders, newOrder] };
+      return { ...state, orders: [...state.orders, action.order] };
     }
     default:
       return state;
@@ -89,6 +90,10 @@ const orderReducer = (state, action) => {
     }
     case "next_step": {
       return { ...state, step: state.step + 1 };
+    }
+    case "finish_order": {
+      const { status, payDate } = action;
+      return { ...state, status, payDate, finished: true };
     }
     default:
       return state;

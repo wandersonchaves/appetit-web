@@ -20,6 +20,7 @@ import avatar1 from "../../assets/avatarProducts/avatar1.png";
 import { AppContext, OrderContext } from "../../context";
 import ProductsList from "./ProductsList";
 import ClientsList from "./ClientsList";
+import OrderPayment from "./OrderPayment";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -38,8 +39,6 @@ const BorderLinearProgress = withStyles((theme) => ({
 
 // TODO criar arquivo OrderInfo/index.js
 export default function OrderInfo() {
-  const theme = useTheme();
-  const history = useHistory();
   const { state: order } = React.useContext(OrderContext);
 
   const progress = Math.ceil(order.step * 33.3);
@@ -58,6 +57,7 @@ export default function OrderInfo() {
       </Box>
       {order.step === 1 && <ProductsList />}
       {order.step === 2 && <ClientsList />}
+      {order.step === 3 && <OrderPayment />}
     </>
   );
 }
