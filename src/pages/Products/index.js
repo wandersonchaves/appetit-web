@@ -2,12 +2,14 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import { Switch, useRouteMatch, Route, useParams } from "react-router-dom";
+import { Typography } from "@material-ui/core";
+
 import Layout from "../../components/Layout";
 import PageTitle from "../../components/PageTItle";
 import imgProducts from "../../assets/img-products.svg";
-import { Typography } from "@material-ui/core";
-import { Switch, useRouteMatch, Route, useParams } from "react-router-dom";
 import OrderInfo from "../OrderInfo";
+import OrderDetail from "../OrderDetail";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -55,11 +57,6 @@ export default function Productos() {
       </Grid>
     </Layout>
   );
-}
-
-function OrderDetail() {
-  let { productId } = useParams();
-  return <PageTitle mx={5} to="/products" title="Detalhes do pedido" />;
 }
 
 /*

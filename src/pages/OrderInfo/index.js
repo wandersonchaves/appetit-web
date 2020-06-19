@@ -1,8 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import Divider from "@material-ui/core/Divider";
-import PageTitle from "../../components/PageTItle";
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -16,6 +14,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Avatar from "@material-ui/core/Avatar";
 import { useHistory } from "react-router-dom";
+
+import PageTitle from "../../components/PageTItle";
 import avatar1 from "../../assets/avatarProducts/avatar1.png";
 
 const productsByCategory = [
@@ -29,14 +29,28 @@ const productsByCategory = [
         price: "R$ 2,25",
         avatar: avatar1,
       },
+      {
+        id: "p2",
+        name: "Cuzcuz completo",
+        category: "Cuzcuz",
+        price: "R$ 3,25",
+        avatar: avatar1,
+      },
     ],
   },
   {
     name: "Pães",
     products: [
       {
-        id: "p2",
+        id: "p3",
         name: "Pão caseiro",
+        category: "Pães",
+        price: "R$ 2,25",
+        avatar: avatar1,
+      },
+      {
+        id: "p4",
+        name: "Pão caseiro completo",
         category: "Pães",
         price: "R$ 2,25",
         avatar: avatar1,

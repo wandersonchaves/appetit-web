@@ -9,16 +9,12 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
-import { makeStyles } from "@material-ui/core/styles";
 
 import Layout from "../../components/Layout";
 import avatar1 from "../../assets/avatarProducts/avatar1.png";
 
-const useStyles = makeStyles((theme) => ({}));
-
 export default function Order() {
   const history = useHistory();
-  const classes = useStyles();
 
   const productsByDate = [
     {
