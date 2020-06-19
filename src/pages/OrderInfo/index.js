@@ -1,5 +1,5 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, useTheme } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -18,25 +18,8 @@ import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 import PageTitle from "../../components/PageTItle";
 import avatar1 from "../../assets/avatarProducts/avatar1.png";
 import { AppContext, OrderContext } from "../../context";
-
-// retorna os produtos agrupados por categoria para facilitar a criacao da lista de produtos no pedido
-/*
-[{name: 'category', products: []}]
-*/
-const getProductsByCategory = (products) => {
-  const result = [];
-  const findGroup = (name) => result.find((group) => group.name === name);
-
-  products.forEach((product) => {
-    const group = findGroup(product.category);
-    if (group) {
-      group.products.push(product);
-    } else {
-      result.push({ name: product.category, products: [product] });
-    }
-  });
-  return result;
-};
+import { Button } from "@material-ui/core";
+import ChevronRightOutlinedIcon from "@material-ui/icons/ChevronRightOutlined";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -62,16 +45,62 @@ const ProductListItem = withStyles((theme) => ({
   },
 }))(ListItem);
 
+// TODO criar component compartilhado
+const NextButton = withStyles((theme) => ({
+  root: {
+    borderRadius: 5,
+  },
+}))(Button);
+
+// retorna os produtos agrupados por categoria para facilitar a criacao da lista de produtos no pedido
+/*
+[{name: 'category', products: []}]
+*/
+const getProductsByCategory = (products) => {
+  const result = [];
+  const findGroup = (name) => result.find((group) => group.name === name);
+
+  products.forEach((product) => {
+    const group = findGroup(product.category);
+    if (group) {
+      group.products.push(product);
+    } else {
+      result.push({ name: product.category, products: [product] });
+    }
+  });
+  return result;
+};
+
+// retorna um object com os produtos tendo o id como chave
+const getProductsById = (products) => {
+  const result = {};
+  products.forEach((product) => {
+    result[product.id] = product;
+  });
+  return result;
+};
+
 // TODO criar arquivo OrderInfo/index.js
 export default function OrderInfo() {
+  const theme = useTheme();
   const history = useHistory();
   const {
     state: { products },
   } = React.useContext(AppContext);
   const { state: order, dispatch } = React.useContext(OrderContext);
   const productsByCategory = getProductsByCategory(products);
+  const productsById = getProductsById(products);
 
-  console.log(order);
+  // soma da quantidade e preco de cada produto do pedido
+  const getTotal = () => {
+    let total = 0;
+    Object.keys(order.products).forEach((id) => {
+      total += order.products[id].quantity * productsById[id].price;
+    });
+    return total;
+  };
+
+  const hasProducts = () => Object.keys(order.products).length > 0;
 
   return (
     <>
@@ -143,6 +172,26 @@ export default function OrderInfo() {
           </List>
         ))}
       </Box>
+      {hasProducts() && (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          bgcolor={theme.palette.primary.main}
+        >
+          <Box mx={3} my={2} color="#fff">
+            <b>Total: R$ {getTotal()}</b>
+          </Box>
+          <Box m={2}>
+            <NextButton
+              style={{ color: "#fff" }}
+              endIcon={<ChevronRightOutlinedIcon />}
+            >
+              Avançar
+            </NextButton>
+          </Box>
+        </Box>
+      )}
     </>
   );
 }
