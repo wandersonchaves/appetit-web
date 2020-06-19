@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Box,
   List,
@@ -113,12 +113,9 @@ export default function ProductsList() {
             }
           >
             {category.products.map((product) => {
-              const labelId = `checkbox-list-secondary-label-${product.id}`;
-
               return (
-                <>
+                <Fragment key={product.id}>
                   <ProductListItem
-                    key={product.id}
                     button
                     onClick={() => history.push(`/products/${product.id}`)}
                   >
@@ -131,13 +128,13 @@ export default function ProductsList() {
                         <Avatar alt={product.name} src={product.avatar} />
                       )}
                     </ListItemAvatar>
-                    <ListItemText id={labelId} primary={product.name} />
+                    <ListItemText primary={product.name} />
                     <ListItemSecondaryAction>
                       <Typography variant="body2">{product.price}</Typography>
                     </ListItemSecondaryAction>
                   </ProductListItem>
                   <Divider light />
-                </>
+                </Fragment>
               );
             })}
           </List>

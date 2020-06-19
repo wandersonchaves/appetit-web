@@ -7,10 +7,11 @@ import { Typography } from "@material-ui/core";
 
 import Layout from "../../components/Layout";
 import PageTitle from "../../components/PageTItle";
-import imgProducts from "../../assets/img-products.svg";
 import OrderInfo from "../OrderInfo";
 import OrderDetail from "../OrderDetail";
 import { AppContext, OrderContext } from "../../context";
+import NewOrderImage from "./NewOrderImage";
+import SelectedItemsAndClientsList from "./SelectedItemsAndClientsList";
 
 const tableClients = [
   { id: "c1", name: "Justine Marshall", avatar: "" },
@@ -66,9 +67,6 @@ const appReducer = (state, action) => {
       const newOrder = action.payload;
       return { ...state, orders: [...state.orders, newOrder] };
     }
-    case "add_clients": {
-      return { ...state, clients: { ...state.clients, ...action.payload } };
-    }
     default:
       return state;
   }
@@ -86,6 +84,9 @@ const orderReducer = (state, action) => {
         },
       };
     }
+    case "save_clients": {
+      return { ...state, clients: { ...state.clients, ...action.clients } };
+    }
     case "next_step": {
       return { ...state, step: state.step + 1 };
     }
@@ -102,16 +103,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     height: 3,
   },
-  areaImg: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    marginTop: 120,
-  },
 }));
 
 export default function Productos() {
   const classes = useStyles();
+
   let { path, url } = useRouteMatch();
   const [appState, appDispatch] = React.useReducer(appReducer, appInitialState);
   const [orderState, orderDispatch] = React.useReducer(
@@ -128,12 +124,8 @@ export default function Productos() {
           >
             <Grid item sm={6}>
               <PageTitle mx={5} to="/home" title="Novo pedido" />
-              <Box className={classes.areaImg}>
-                <img alt="Img Produtos" src={imgProducts} />
-                <Typography component="h3" variant="subtitle1" align="center">
-                  Acompanhe aqui um resumo desta venda
-                </Typography>
-              </Box>
+              {orderState.step === 1 && <NewOrderImage />}
+              {orderState.step > 1 && <SelectedItemsAndClientsList />}
             </Grid>
             <Grid item sm={6} style={{ backgroundColor: "#f5f5f5" }}>
               <Switch>

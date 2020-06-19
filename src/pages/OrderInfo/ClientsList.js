@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { OrderContext, AppContext } from "../../context";
 import {
@@ -61,6 +61,11 @@ export default function ClientsList() {
     }
   };
 
+  const handleSaveClients = () => {
+    dispatch({ type: "save_clients", clients: selectedClients });
+    dispatch({ type: "next_step" });
+  };
+
   const getTotalSelectedClients = () => Object.keys(selectedClients).length;
 
   return (
@@ -85,12 +90,8 @@ export default function ClientsList() {
       <Box mx={5} mt={2}>
         <List>
           {clients.map((client) => (
-            <>
-              <CustomListItem
-                key={client.id}
-                button
-                onClick={toggleClient(client.id)}
-              >
+            <Fragment key={client.id}>
+              <CustomListItem button onClick={toggleClient(client.id)}>
                 <ListItemAvatar>
                   {selectedClients[client.id] ? (
                     <Avatar className={classes.avatar}>
@@ -103,7 +104,7 @@ export default function ClientsList() {
                 <ListItemText primary={client.name} />
               </CustomListItem>
               <Divider light />
-            </>
+            </Fragment>
           ))}
         </List>
       </Box>
@@ -121,7 +122,7 @@ export default function ClientsList() {
             <NextButton
               style={{ color: "#fff" }}
               endIcon={<ChevronRightOutlinedIcon />}
-              onClick={() => dispatch({ type: "next_step" })}
+              onClick={handleSaveClients}
             >
               Avançar
             </NextButton>
