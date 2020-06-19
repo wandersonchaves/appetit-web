@@ -14,10 +14,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Avatar from "@material-ui/core/Avatar";
 import { useHistory } from "react-router-dom";
-
+import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 import PageTitle from "../../components/PageTItle";
 import avatar1 from "../../assets/avatarProducts/avatar1.png";
-import { AppContext } from "../../context";
+import { AppContext, OrderContext } from "../../context";
 
 // retorna os produtos agrupados por categoria para facilitar a criacao da lista de produtos no pedido
 /*
@@ -68,7 +68,10 @@ export default function OrderInfo() {
   const {
     state: { products },
   } = React.useContext(AppContext);
+  const { state: order, dispatch } = React.useContext(OrderContext);
   const productsByCategory = getProductsByCategory(products);
+
+  console.log(order);
 
   return (
     <>
@@ -122,7 +125,13 @@ export default function OrderInfo() {
                   onClick={() => history.push(`/products/${product.id}`)}
                 >
                   <ListItemAvatar>
-                    <Avatar alt={product.name} src={product.avatar} />
+                    {order.products[product.id] ? (
+                      <Avatar>
+                        <CheckCircleOutlinedIcon />
+                      </Avatar>
+                    ) : (
+                      <Avatar alt={product.name} src={product.avatar} />
+                    )}
                   </ListItemAvatar>
                   <ListItemText id={labelId} primary={product.name} />
                   <ListItemSecondaryAction>

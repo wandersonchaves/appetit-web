@@ -25,7 +25,10 @@ const tableProducts = [
     name: "Cuzcuz simples",
     category: "Cuzcuz",
     price: 2.25,
-    options: ["Milho", "Arroz"],
+    options: [
+      { id: "p1o1", name: "Milho" },
+      { id: "p1o2", name: "Arroz" },
+    ],
     avatar: "",
   },
   {
@@ -33,7 +36,10 @@ const tableProducts = [
     name: "Cuzcuz completo",
     category: "Cuzcuz",
     price: 3.25,
-    options: ["Milho", "Arroz"],
+    options: [
+      { id: "p2o1", name: "Milho" },
+      { id: "p2o2", name: "Arroz" },
+    ],
     avatar: "",
   },
 ];
@@ -46,16 +52,22 @@ const appInitialState = {
   orders: tableOrders,
 };
 
+// product = {productId, option, quantity, note}
 const orderInitialState = {
-  products: [],
+  products: {},
   clients: [],
 };
 
 const appReducer = (state, action) => {
   switch (action.type) {
     case "add_order": {
+      console.log(action);
       const newOrder = action.payload;
       return { ...state, orders: [...state.orders, newOrder] };
+    }
+    case "add_clients": {
+      console.log(action);
+      return { ...state, clients: action.payload };
     }
     default:
       return state;
@@ -64,9 +76,15 @@ const appReducer = (state, action) => {
 
 const orderReducer = (state, action) => {
   switch (action.type) {
-    case "add_item": {
-      const { productId } = action.payload;
-      return { ...state, products: [...state.products, { id: productId }] };
+    case "save_item": {
+      const item = action.payload;
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          [item.productId]: item,
+        },
+      };
     }
     default:
       return state;
