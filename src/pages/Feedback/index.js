@@ -1,4 +1,59 @@
 import React from "react";
+import { Box, Button, Typography, makeStyles } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
+import imgFeedback from "../../assets/feedback.svg";
+import Layout from "../../components/Layout";
+
+const useStyle = makeStyles((theme) => ({
+  root: {
+    minHeight: "80vh",
+  },
+  text: {
+    padding: theme.spacing(5, 0),
+  },
+  btns: {
+    "& a": {
+      margin: theme.spacing(0, 2),
+      width: 300,
+    },
+  },
+}));
+
+export default function FeedbackPage() {
+  const classes = useStyle();
+
+  return (
+    <Layout>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        className={classes.root}
+      >
+        <img alt="Img Feedback" src={imgFeedback} />
+        <Typography variant="h5" component="h1" className={classes.text}>
+          Pedido feito com sucesso!
+        </Typography>
+        <Box display="flex" justifyContent="center" className={classes.btns}>
+          <Button variant="outlined" component={RouterLink} to="/home">
+            Voltar para List de Pedidos
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            component={RouterLink}
+            to="/products"
+          >
+            Fazer Novo Pedido
+          </Button>
+        </Box>
+      </Box>
+    </Layout>
+  );
+}
+
+/*
 import { Link } from "react-router-dom";
 import { MdList, MdPeople } from "react-icons/md";
 
@@ -61,3 +116,4 @@ export default function Products() {
     </div>
   );
 }
+*/
