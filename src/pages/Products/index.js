@@ -1,100 +1,145 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { MdList, MdPeople } from "react-icons/md";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import { Switch, useRouteMatch, Route, useParams } from "react-router-dom";
+import { Typography } from "@material-ui/core";
 
-import "./styles.css";
-import logoImg from "../../assets/logo-white.svg";
-import imgProducts from "../../assets/img-products.svg";
+import Layout from "../../components/Layout";
+import PageTitle from "../../components/PageTItle";
+import OrderInfo from "../OrderInfo";
+import OrderDetail from "../OrderDetail";
+import { AppContext, OrderContext } from "../../context";
+import NewOrderImage from "./NewOrderImage";
+import SelectedItemsAndClientsList from "./SelectedItemsAndClientsList";
 
-export default function Products() {
+const tableClients = [
+  { id: "c1", name: "Justine Marshall", avatar: "" },
+  { id: "c2", name: "Bairan Frootan", avatar: "" },
+  { id: "c3", name: "Tua Manuera", avatar: "" },
+  { id: "c4", name: "Maria Aparecida", avatar: "" },
+  { id: "c5", name: "Wanderson Chaves", avatar: "" },
+];
+const tableProducts = [
+  {
+    id: "p1",
+    name: "Cuzcuz simples",
+    category: "Cuzcuz",
+    price: 2.25,
+    options: [
+      { id: "p1o1", name: "Milho" },
+      { id: "p1o2", name: "Arroz" },
+    ],
+    avatar: "",
+  },
+  {
+    id: "p2",
+    name: "Cuzcuz completo",
+    category: "Cuzcuz",
+    price: 3.25,
+    options: [
+      { id: "p2o1", name: "Milho" },
+      { id: "p2o2", name: "Arroz" },
+    ],
+    avatar: "",
+  },
+];
+
+const tableOrders = [];
+
+const appInitialState = {
+  clients: tableClients,
+  products: tableProducts,
+  orders: tableOrders,
+};
+
+// product = {productId, option, quantity, note}
+const orderInitialState = {
+  step: 1,
+  products: {},
+  clients: {},
+};
+
+const appReducer = (state, action) => {
+  switch (action.type) {
+    case "add_order": {
+      console.log(action);
+      const newOrder = action.payload;
+      return { ...state, orders: [...state.orders, newOrder] };
+    }
+    default:
+      return state;
+  }
+};
+
+const orderReducer = (state, action) => {
+  switch (action.type) {
+    case "save_item": {
+      const item = action.payload;
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          [item.productId]: item,
+        },
+      };
+    }
+    case "save_clients": {
+      return { ...state, clients: { ...state.clients, ...action.clients } };
+    }
+    case "next_step": {
+      return { ...state, step: state.step + 1 };
+    }
+    default:
+      return state;
+  }
+};
+
+const useStyles = makeStyles((theme) => ({
+  title: {
+    width: 230,
+  },
+  titleDivider: {
+    backgroundColor: theme.palette.primary.main,
+    height: 3,
+  },
+}));
+
+export default function Productos() {
+  const classes = useStyles();
+
+  let { path, url } = useRouteMatch();
+  const [appState, appDispatch] = React.useReducer(appReducer, appInitialState);
+  const [orderState, orderDispatch] = React.useReducer(
+    orderReducer,
+    orderInitialState
+  );
+
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col modal-dialog-centered text-center justify-content-center">
-          <nav>
-            <Link to="/">
-              <img src={logoImg} alt="Logo Appetit" />
-            </Link>
-
-            <ul>
-              <li>
-                <Link to="/home">
-                  <MdList size={25} />
-                  PEDIDOS
-                </Link>
-              </li>
-              <ul>
-                <li>
-                  <Link to="/order/open">EM ABERTOS</Link>
-                </li>
-                <li>
-                  <Link to="/order/closed">ENCERRADOS</Link>
-                </li>
-              </ul>
-              <li>
-                <Link to="/clients">
-                  <MdPeople size={20} />
-                  CLIENTES
-                </Link>
-              </li>
-            </ul>
-
-            <p className="copy">Infoway Gestão em Saúde &copy;, 2019.</p>
-          </nav>
-        </div>
-
-        <div className="col">
-          <section className="content">
-            <h1>Novo pedido</h1>
-
-            <img src={imgProducts} alt="Img Products" />
-
-            <p>Acompanhe aqui um resumo desta venda.</p>
-          </section>
-        </div>
-
-        <div className="col">
-          <section className="content-aux">
-            <h1>Informações para o pedido</h1>
-
-            <p>Preencha as informações abaixo para concluir esta venda.</p>
-
-            <p>Passo 1 de 3</p>
-            <p>Barra de progresso</p>
-
-            <strong>O que você está vendendo?</strong>
-
-            <input type="text" placeholder="Procute o produto aqui..." />
-
-            <ul>
-              <li>Cuscuz</li>
-              <ul>
-                <li>Avatar</li>
-                <li>Cuscuz Simples</li>
-                <li>Preço</li>
-              </ul>
-              <ul>
-                <li>Avatar</li>
-                <li>Cuscuz Completo</li>
-                <li>Preço</li>
-              </ul>
-            </ul>
-            <ul>
-              <li>Pães</li>
-              <ul>
-                <li>Avatar</li>
-                <li>Pão Caseiro</li>
-                <li>Preço</li>
-              </ul>
-              <ul>
-                <li>Avatar</li>
-                <li>Pão caseiro completo</li>
-                <li>Preço</li>
-              </ul>
-            </ul>
-          </section>
-        </div>
-      </div>
-    </div>
+    <Layout>
+      <Grid container>
+        <AppContext.Provider value={{ state: appState, dispatch: appDispatch }}>
+          <OrderContext.Provider
+            value={{ state: orderState, dispatch: orderDispatch }}
+          >
+            <Grid item sm={6}>
+              <PageTitle mx={5} to="/home" title="Novo pedido" />
+              {orderState.step === 1 && <NewOrderImage />}
+              {orderState.step > 1 && <SelectedItemsAndClientsList />}
+            </Grid>
+            <Grid item sm={6} style={{ backgroundColor: "#f5f5f5" }}>
+              <Switch>
+                <Route exact path={path}>
+                  <OrderInfo />
+                </Route>
+                <Route path={`${path}/:productId`}>
+                  <OrderDetail />
+                </Route>
+              </Switch>
+            </Grid>
+          </OrderContext.Provider>
+        </AppContext.Provider>
+      </Grid>
+    </Layout>
   );
 }
