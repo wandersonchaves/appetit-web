@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams, Redirect } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 import theme from "../../theme";
 import PageTitle from "../../components/PageTItle";
 import avatar1 from "../../assets/avatarProducts/avatar1.png";
+import { AppContext } from "../../context";
 
 const useStyles = makeStyles({
   root: {
@@ -56,10 +57,22 @@ const options = [
   },
 ];
 
+const findProduct = (id, products) => products.find((p) => p.id === id);
+
 export default function OrderDetail() {
-  const history = useHistory();
   const classes = useStyles();
+  const history = useHistory();
+  const { productId } = useParams();
   const [checked, setChecked] = React.useState([0]);
+
+  const {
+    state: { products },
+  } = React.useContext(AppContext);
+  const product = findProduct(productId, products);
+
+  if (!product) {
+    return <Redirect to="/products" />;
+  }
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);

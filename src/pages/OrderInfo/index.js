@@ -17,47 +17,26 @@ import { useHistory } from "react-router-dom";
 
 import PageTitle from "../../components/PageTItle";
 import avatar1 from "../../assets/avatarProducts/avatar1.png";
+import { AppContext } from "../../context";
 
-const productsByCategory = [
-  {
-    name: "Cuzcuz",
-    products: [
-      {
-        id: "p1",
-        name: "Cuzcuz simples",
-        category: "Cuzcuz",
-        price: "R$ 2,25",
-        avatar: avatar1,
-      },
-      {
-        id: "p2",
-        name: "Cuzcuz completo",
-        category: "Cuzcuz",
-        price: "R$ 3,25",
-        avatar: avatar1,
-      },
-    ],
-  },
-  {
-    name: "Pães",
-    products: [
-      {
-        id: "p3",
-        name: "Pão caseiro",
-        category: "Pães",
-        price: "R$ 2,25",
-        avatar: avatar1,
-      },
-      {
-        id: "p4",
-        name: "Pão caseiro completo",
-        category: "Pães",
-        price: "R$ 2,25",
-        avatar: avatar1,
-      },
-    ],
-  },
-];
+// retorna os produtos agrupados por categoria para facilitar a criacao da lista de produtos no pedido
+/*
+[{name: 'category', products: []}]
+*/
+const getProductsByCategory = (products) => {
+  const result = [];
+  const findGroup = (name) => result.find((group) => group.name === name);
+
+  products.forEach((product) => {
+    const group = findGroup(product.category);
+    if (group) {
+      group.products.push(product);
+    } else {
+      result.push({ name: product.category, products: [product] });
+    }
+  });
+  return result;
+};
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -86,6 +65,10 @@ const ProductListItem = withStyles((theme) => ({
 // TODO criar arquivo OrderInfo/index.js
 export default function OrderInfo() {
   const history = useHistory();
+  const {
+    state: { products },
+  } = React.useContext(AppContext);
+  const productsByCategory = getProductsByCategory(products);
 
   return (
     <>
