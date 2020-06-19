@@ -113,7 +113,7 @@ export default function OrderInfo() {
         </Typography>
       </Box>
       <Box mx={5} mt={2}>
-        <Typography variant="subtitle1">Passo 1 de 3</Typography>
+        <Typography variant="subtitle1">Passo {order.step} de 3</Typography>
         <BorderLinearProgress variant="determinate" value={progress} />
       </Box>
       <Box mx={5} mt={3}>
@@ -188,6 +188,7 @@ export default function OrderInfo() {
             <NextButton
               style={{ color: "#fff" }}
               endIcon={<ChevronRightOutlinedIcon />}
+              onClick={() => dispatch({ type: "next_step" })}
             >
               Avançar
             </NextButton>

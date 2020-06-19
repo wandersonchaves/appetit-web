@@ -87,6 +87,9 @@ const orderReducer = (state, action) => {
         },
       };
     }
+    case "next_step": {
+      return { ...state, step: state.step + 1 };
+    }
     default:
       return state;
   }
