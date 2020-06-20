@@ -94,6 +94,7 @@ export default function OrderDetail() {
         productId,
         quantity,
         note,
+        price: product.price,
         option: selectedOption,
       },
     });

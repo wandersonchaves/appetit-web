@@ -51,9 +51,6 @@ export default function SelectedItemsAndClientsList() {
   const orderClients = Object.keys(order.clients).map(
     (id) => order.clients[id]
   );
-  const total = orderItems.reduce((sum, item) => {
-    return sum + item.quantity * productsById[item.productId].price;
-  }, 0);
 
   return (
     <>
@@ -115,7 +112,7 @@ export default function SelectedItemsAndClientsList() {
       {orderItems.length > 0 && (
         <Box mx={5} mt={3} display="flex" justifyContent="space-between">
           <Typography>Total</Typography>
-          <Typography>R$ {total}</Typography>
+          <Typography>R$ {order.total}</Typography>
         </Box>
       )}
     </>

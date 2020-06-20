@@ -13,26 +13,39 @@ import { OrderContext } from "../../context";
 import NewOrderImage from "./NewOrderImage";
 import SelectedItemsAndClientsList from "./SelectedItemsAndClientsList";
 
-// product = {productId, option, quantity, note}
+// product = {productId, option, quantity, note, price}
 const orderInitialState = {
   step: 1,
   status: "",
   finished: false,
+  total: 0,
   payDate: new Date(),
   products: {},
   clients: {},
+};
+
+const sumTotal = (items) => {
+  console.log({ items });
+  let sum = 0;
+  Object.keys(items).forEach((id) => {
+    sum += items[id].quantity * items[id].price;
+  });
+  return sum;
 };
 
 const orderReducer = (state, action) => {
   switch (action.type) {
     case "save_item": {
       const item = action.payload;
+      const newItems = {
+        ...state.products,
+        [item.productId]: item,
+      };
+
       return {
         ...state,
-        products: {
-          ...state.products,
-          [item.productId]: item,
-        },
+        total: sumTotal(newItems),
+        products: newItems,
       };
     }
     case "save_clients": {
