@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Orders from "./pages/Orders";
 import Products from "./pages/Products";
 import Clients from "./pages/Clients";
-import Pay from "./pages/Pay";
 import Feedback from "./pages/Feedback";
 
 import initialState from "./data";
@@ -36,7 +35,6 @@ export default function App() {
           <Route path="/orders/:id" component={Orders} />
           <Route path="/products" component={Products} />
           <Route path="/clients" component={Clients} />
-          <Route path="/pay" component={Pay} />
           <Route path="/feedback" component={Feedback} />
         </Switch>
       </BrowserRouter>
