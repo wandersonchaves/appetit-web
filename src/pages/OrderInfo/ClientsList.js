@@ -11,7 +11,6 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
-  ListItemSecondaryAction,
   withStyles,
   Divider,
   useTheme,

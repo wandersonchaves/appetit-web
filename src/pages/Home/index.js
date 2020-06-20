@@ -20,10 +20,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import FilterIcon from "@material-ui/icons/Tune";
 
 import Layout from "../../components/Layout";
-import avatar1 from "../../assets/avatarClients/avatar1.png";
-import avatar2 from "../../assets/avatarClients/avatar2.png";
-import avatar3 from "../../assets/avatarClients/avatar3.png";
-import avatar4 from "../../assets/avatarClients/avatar4.png";
 import PageTitle from "../../components/PageTItle";
 import { AppContext } from "../../context";
 
