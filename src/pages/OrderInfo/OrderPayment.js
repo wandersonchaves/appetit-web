@@ -17,6 +17,12 @@ import {
 import { OrderContext, AppContext } from "../../context";
 import { useHistory } from "react-router-dom";
 
+// TODO mover funcao para modulo utils.js
+// see https://gist.github.com/6174/6062387
+const makeId = () =>
+  Math.random().toString(36).substring(2, 15) +
+  Math.random().toString(36).substring(2, 15);
+
 export default function OrderPayment() {
   const history = useHistory();
   const { state: order, dispatch: orderDispatch } = React.useContext(
@@ -24,11 +30,12 @@ export default function OrderPayment() {
   );
   const { dispatch: appDispatch } = React.useContext(AppContext);
   const [status, setStatus] = React.useState(order.status);
-  const [payDate, setPayDate] = React.useState(order.payDate);
+  const [date, setDate] = React.useState(order.date);
 
   const handleSaveOrder = () => {
-    const finishedOrder = { ...order, status, payDate };
-    orderDispatch({ type: "finish_order", status, payDate });
+    const id = makeId();
+    const finishedOrder = { ...order, status, date, id };
+    orderDispatch({ type: "finish_order", status, date, id });
     appDispatch({ type: "add_order", order: finishedOrder });
     history.push("/feedback");
   };
@@ -73,8 +80,8 @@ export default function OrderPayment() {
             inputVariant="outlined"
             format="dd/MM/yyyy"
             fullWidth
-            value={payDate}
-            onChange={setPayDate}
+            value={date}
+            onChange={setDate}
             KeyboardButtonProps={{
               "aria-label": "change date",
             }}

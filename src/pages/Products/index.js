@@ -15,17 +15,17 @@ import SelectedItemsAndClientsList from "./SelectedItemsAndClientsList";
 
 // product = {productId, option, quantity, note, price}
 const orderInitialState = {
+  id: "",
   step: 1,
   status: "",
   finished: false,
   total: 0,
-  payDate: new Date(),
+  date: new Date(),
   products: {},
   clients: {},
 };
 
 const sumTotal = (items) => {
-  console.log({ items });
   let sum = 0;
   Object.keys(items).forEach((id) => {
     sum += items[id].quantity * items[id].price;

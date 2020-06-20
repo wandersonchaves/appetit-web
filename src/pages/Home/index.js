@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import { format } from "date-fns";
 import { Link as RouterLink } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 import SearchIcon from "@material-ui/icons/Search";
@@ -24,6 +25,7 @@ import avatar2 from "../../assets/avatarClients/avatar2.png";
 import avatar3 from "../../assets/avatarClients/avatar3.png";
 import avatar4 from "../../assets/avatarClients/avatar4.png";
 import PageTitle from "../../components/PageTItle";
+import { AppContext } from "../../context";
 
 const NovoPedidoButton = withStyles((theme) => ({
   root: {
@@ -33,48 +35,73 @@ const NovoPedidoButton = withStyles((theme) => ({
   },
 }))(Button);
 
+const getProductsById = (products) => {
+  const result = {};
+  products.forEach((product) => {
+    result[product.id] = product;
+  });
+  return result;
+};
+
+const getClientsById = (clients) => {
+  const result = {};
+  clients.forEach((client) => {
+    result[client.id] = client;
+  });
+  return result;
+};
+
+const getOrdersByDate = (orders) => {
+  const result = [];
+  const findGroup = (date) => result.find((r) => r.date === date);
+
+  orders.forEach((order) => {
+    const date = format(order.date, "dd/MM/yyyy");
+    const group = findGroup(date);
+    if (group) {
+      group.total += order.total;
+      group.orders.push(order);
+    } else {
+      result.push({
+        date: date,
+        total: order.total,
+        orders: [order],
+      });
+    }
+  });
+
+  return result;
+};
+
+const getFirstClient = (order, clients) => {
+  const id = Object.keys(order.clients)[0];
+  return clients[id];
+};
+
+// retorna os nomes e quantidade separado por virgula de cada produto do pedido
+const getProductsDescription = (order, products) => {
+  const result = [];
+  Object.keys(order.products).forEach((id) => {
+    const orderItem = order.products[id];
+    const product = products[id];
+    let description = product.name;
+    if (orderItem.quantity > 1) {
+      description = `${orderItem.quantity}x ${description}`;
+    }
+    result.push(description);
+  });
+  return `${result.join(`, `)}.`;
+};
+
 export default function Home() {
   const history = useHistory();
-
-  const ordersByDate = [
-    {
-      date: "13/05/2019",
-      total: "R$ 45.80",
-      clients: [
-        {
-          id: "ord5",
-          name: "Marcel Batista",
-          avatar: avatar1,
-        },
-        {
-          id: "ord4",
-          name: "Fernanda Siqueira",
-          avatar: avatar2,
-        },
-        {
-          id: "ord3",
-          name: "Luiz Oliveira",
-          avatar: avatar3,
-        },
-      ],
-    },
-    {
-      date: "09/05/2019",
-      total: "R$ 123.50",
-      clients: [
-        {
-          id: "ord2",
-          name: "Ana Virlania",
-          avatar: avatar4,
-        },
-        {
-          id: "ord1",
-          name: "Marcel Batista",
-          avatar: avatar1,
-        },
-      ],
-    },
-  ];
+  const {
+    state: { orders, clients, products },
+  } = React.useContext(AppContext);
+  const productsById = getProductsById(products);
+  const clientsById = getClientsById(clients);
+  // TODO order por data decrescente
+  const ordersByDate = getOrdersByDate(orders);
 
   return (
     <Layout>
@@ -112,41 +139,42 @@ export default function Home() {
             }}
           />
         </Box>
-
         <Box>
-          {ordersByDate.map((order, i) => (
+          {ordersByDate.map((dateOrders, i) => (
             <List
               dense
               key={i}
               subheader={
                 <ListSubheader component="div" id="nested-list-subheader">
                   <p>
-                    <strong>{order.date}</strong>, Você vendeu{" "}
-                    <strong>{order.total}</strong>
+                    <strong>{dateOrders.date}</strong>, Você vendeu{" "}
+                    <strong>{dateOrders.total}</strong>
                   </p>
                 </ListSubheader>
               }
             >
-              {order.clients.map((client) => {
-                const labelId = `checkbox-list-secondary-label-${client.id}`;
+              {dateOrders.orders.map((order) => {
+                const client = getFirstClient(order, clientsById);
+                const productsDescription = getProductsDescription(
+                  order,
+                  productsById
+                );
 
                 return (
                   <ListItem
-                    color="#000"
-                    key={client.id}
+                    key={order.id}
                     button
-                    onClick={() => history.push(`/orders/${client.id}`)}
+                    onClick={() => history.push(`/orders/${order.id}`)}
                   >
                     <ListItemAvatar>
                       <Avatar alt={client.name} src={client.avatar} />
                     </ListItemAvatar>
                     <ListItemText
-                      id={labelId}
                       primary={`${client.name}`}
-                      secondary="Cuscuz com calabresa, suco de laranja."
+                      secondary={productsDescription}
                     />
                     <ListItemSecondaryAction>
-                      <Typography>R$ 3.50</Typography>
+                      <Typography>R$ {order.total}</Typography>
                     </ListItemSecondaryAction>
                   </ListItem>
                 );
