@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Typography, makeStyles } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
-import imgFeedback from "../../assets/feedback.svg";
+import imgFeedback from "../../assets/background-illustration.svg";
 import Layout from "../../components/Layout";
 
 const useStyle = makeStyles((theme) => ({

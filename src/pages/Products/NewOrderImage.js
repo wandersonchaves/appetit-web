@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Box, makeStyles } from "@material-ui/core";
-import imgProducts from "../../assets/img-products.svg";
+import imgProducts from "../../assets/background-illustration.svg";
 
 const useStyles = makeStyles((theme) => ({
   areaImg: {

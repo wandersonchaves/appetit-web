@@ -11,7 +11,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 
 import Layout from "../../components/Layout";
-import avatar1 from "../../assets/avatarProducts/avatar1.png";
+import cuscuzSimples from "../../assets/avatarProducts/cuscuz-simples.png";
+import cuscuzCompleto from "../../assets/avatarProducts/cuscuz-completo.png";
 
 export default function Order() {
   const history = useHistory();
@@ -24,7 +25,7 @@ export default function Order() {
           id: 1,
           quantity: 2,
           name: "x Bolo frito + Café c/ leite",
-          avatar: avatar1,
+          avatar: cuscuzSimples,
           price: "R$ 4.25",
         },
       ],
@@ -36,7 +37,7 @@ export default function Order() {
           id: 2,
           quantity: 2,
           name: "x Bolo frito + Café c/ leite",
-          avatar: avatar1,
+          avatar: cuscuzCompleto,
           price: "R$ 4.25",
         },
       ],
