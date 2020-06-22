@@ -1,3 +1,28 @@
+import cuscuzSimples from "./assets/avatarProducts/cuscuz-simples.png";
+import cuscuzCompleto from "./assets/avatarProducts/cuscuz-completo.png";
+import paoCaseiro from "./assets/avatarProducts/pao-caseiro.png";
+import paoCaseiroCompleto from "./assets/avatarProducts/pao-caseiro-completo.png";
+import mistoQuente from "./assets/avatarProducts/misto-quente.png";
+import linguaDeSograP from "./assets/avatarProducts/lingua-de-sogra-p.png";
+import linguaDeSograG from "./assets/avatarProducts/lingua-de-sogra-g.png";
+import pastelzinhoDeCarne from "./assets/avatarProducts/pastelzinho-de-carne.png";
+import esfirraDeFrango from "./assets/avatarProducts/esfirra-de-frango.png";
+import enroladoDePresunto from "./assets/avatarProducts/enrolado-de-presunto.png";
+import sucos from "./assets/avatarProducts/sucos.png";
+import vitaminas from "./assets/avatarProducts/vitaminas.png";
+import refrigerantes from "./assets/avatarProducts/refrigerantes.png";
+import aguaMineral from "./assets/avatarProducts/agua-mineral.png";
+import aguaMineralComGas from "./assets/avatarProducts/agua-mineral-com-gas.png";
+import nescau from "./assets/avatarProducts/nescau.png";
+
+import anaVirlania from "./assets/avatarClients/ana-virlania.png";
+import bairamFrootan from "./assets/avatarClients/bairam-frootan.png";
+import fernandaSiqueira from "./assets/avatarClients/fernanda-siqueira.png";
+import justineMarshall from "./assets/avatarClients/justine-marshall.png";
+import luizOliveira from "./assets/avatarClients/luiz-oliveira.png";
+import marcelBatista from "./assets/avatarClients/marcel-batista.png";
+import tuaManuera from "./assets/avatarClients/tua-manuera.png";
+
 export default {
   products: [
     {
@@ -9,7 +34,7 @@ export default {
         { id: "p1o1", name: "Milho" },
         { id: "p1o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/cuscuz-simples.png",
+      avatar: cuscuzSimples,
     },
     {
       id: "p2",
@@ -20,7 +45,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/cuscuz-completo.png",
+      avatar: cuscuzCompleto,
     },
     {
       id: "p3",
@@ -31,7 +56,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/pao-caseiro.png",
+      avatar: paoCaseiro,
     },
     {
       id: "p4",
@@ -42,7 +67,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/pao-caseiro-completo.png",
+      avatar: paoCaseiroCompleto,
     },
     {
       id: "p5",
@@ -53,7 +78,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/misto-quente.png",
+      avatar: mistoQuente,
     },
     {
       id: "p6",
@@ -64,7 +89,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/lingua-de-sogra-p.png",
+      avatar: linguaDeSograP,
     },
     {
       id: "p7",
@@ -75,7 +100,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/lingua-de-sogra-g.png",
+      avatar: linguaDeSograG,
     },
     {
       id: "p8",
@@ -86,7 +111,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/pastelzinho-de-carne.png",
+      avatar: pastelzinhoDeCarne,
     },
     {
       id: "p9",
@@ -97,7 +122,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/esfirra-de-frango.png",
+      avatar: esfirraDeFrango,
     },
     {
       id: "p10",
@@ -108,7 +133,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/enrolado-de-presunto.png",
+      avatar: enroladoDePresunto,
     },
     {
       id: "p11",
@@ -119,7 +144,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/sucos.png",
+      avatar: sucos,
     },
     {
       id: "p12",
@@ -130,7 +155,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/vitaminas.png",
+      avatar: vitaminas,
     },
     {
       id: "p13",
@@ -141,7 +166,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/refrigerantes.png",
+      avatar: refrigerantes,
     },
     {
       id: "p14",
@@ -152,7 +177,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/agua-mineral.png",
+      avatar: aguaMineral,
     },
     {
       id: "p15",
@@ -163,7 +188,7 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/agua-mineral-com-gas.png",
+      avatar: aguaMineralComGas,
     },
     {
       id: "p16",
@@ -174,44 +199,44 @@ export default {
         { id: "p2o1", name: "Milho" },
         { id: "p2o2", name: "Arroz" },
       ],
-      avatar: "/src/assets/avatarProducts/nescau.png",
+      avatar: nescau,
     },
   ],
   clients: [
     {
       id: "c1",
       name: "Ana Virlania",
-      avatar: "/src/assets/avatarClients/ana-virlania.png",
+      avatar: anaVirlania,
     },
     {
       id: "c2",
       name: "Bairan Frootan",
-      avatar: "/src/assets/avatarClients/bairam-frootan.png",
+      avatar: bairamFrootan,
     },
     {
       id: "c3",
       name: "Fernanda Siqueira",
-      avatar: "/src/assets/avatarClients/fernanda-siqueira.png",
+      avatar: fernandaSiqueira,
     },
     {
       id: "c4",
       name: "Justine Marshall",
-      avatar: "/src/assets/avatarClients/justine-marshall.png",
+      avatar: justineMarshall,
     },
     {
       id: "c5",
       name: "Luiz Oliveira",
-      avatar: "/src/assets/avatarClients/luiz-oliveira.png",
+      avatar: luizOliveira,
     },
     {
       id: "c6",
       name: "Marcel Batista",
-      avatar: "/src/assets/avatarClients/marcel-batista.png",
+      avatar: marcelBatista,
     },
     {
       id: "c7",
       name: "Tua Manuera",
-      avatar: "/src/assets/avatarClients/tua-manuera.png",
+      avatar: tuaManuera,
     },
   ],
   orders: [],
